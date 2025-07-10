@@ -18,7 +18,7 @@ const FooterDestination = () => {
     setStartAndDestinationSubmitted(false);
   };
   return (
-    <div className="bg-[#3b3b3b] text-white p-4">
+    <div className="absolute bottom-0 left-0 bg-[#3b3b3b] text-white p-4 w-full">
       <div className="w-full flex justify-between items-center flex-1 ">
         <p className="text-gray-400">Heading to:</p>
         <button
@@ -29,8 +29,8 @@ const FooterDestination = () => {
         </button>
       </div>
 
-      <div className="w-full flex items-center flex-1">
-        <img src={assets.searchIcon} alt="" className="h-6 w-6 " />
+      <div className="w-full flex items-center flex-1 gap-2">
+        <img src={assets.searchIcon} alt="search icon" className="h-6 w-6 " />
         <p className="text-2xl">{destination}</p>
       </div>
     </div>

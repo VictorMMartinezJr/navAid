@@ -32,12 +32,12 @@ export default function MapWithLine() {
   const flatPoints = scaledPoints.flatMap((p) => [p.x, p.y]);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto">
+    <div className="absolute  -top-40 left-0 w-full h-full z-0">
       <img
         src={buildingAMap}
         alt="Building A map"
         ref={imgRef}
-        className="w-full h-auto"
+        className="w-full h-full object-cover"
         style={{ display: "block" }}
       />
 
