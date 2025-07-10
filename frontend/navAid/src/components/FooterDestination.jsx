@@ -3,12 +3,19 @@ import { assets } from "../assets/assets";
 import NavigationContext from "../context/NavigationContext";
 
 const FooterDestination = () => {
-  const { setStartingPoint, setDestination, setPath, destination } =
-    useContext(NavigationContext);
+  const {
+    setStartingPoint,
+    setDestination,
+    setPath,
+    destination,
+    setStartAndDestinationSubmitted,
+  } = useContext(NavigationContext);
+
   const handleCancel = () => {
-    setStartingPoint(null);
+    setStartingPoint("Main Entrance");
     setDestination(null);
     setPath([]);
+    setStartAndDestinationSubmitted(false);
   };
   return (
     <div className="bg-[#3b3b3b] text-white p-4">
