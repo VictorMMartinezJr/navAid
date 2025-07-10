@@ -2,9 +2,11 @@ import { useContext } from "react";
 import NavigationContext from "../context/NavigationContext";
 
 const QuickLink = ({ img, altText, quickLinkText }) => {
-  const {} = useContext(NavigationContext);
+  const { setDestination } = useContext(NavigationContext);
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    setDestination(quickLinkText);
+  };
 
   return (
     <div className="h-auto w-auto flex flex-col items-center">
