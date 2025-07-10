@@ -1,4 +1,4 @@
-import { Stage, Layer, Line } from "react-konva";
+import { Stage, Layer, Line, Circle } from "react-konva";
 import { useRef, useEffect, useState, useContext } from "react";
 import buildingAMap from "../assets/buildingAMap.jpg";
 import NavigationContext from "../context/NavigationContext";
@@ -30,6 +30,7 @@ export default function MapWithLine() {
   }));
 
   const flatPoints = scaledPoints.flatMap((p) => [p.x, p.y]);
+  const endPoint = scaledPoints[scaledPoints.length - 1];
 
   return (
     <div className="absolute  -top-40 left-0 w-full h-full z-0">
@@ -48,13 +49,22 @@ export default function MapWithLine() {
       >
         <Layer>
           {flatPoints.length > 0 && (
-            <Line
-              points={flatPoints}
-              stroke="blue"
-              strokeWidth={4}
-              lineCap="round"
-              lineJoin="round"
-            />
+            <>
+              <Line
+                points={flatPoints}
+                stroke="blue"
+                strokeWidth={4}
+                lineCap="round"
+                lineJoin="round"
+              />
+              <Circle
+                x={endPoint.x}
+                y={endPoint.y}
+                radius={8}
+                fill="blue"
+                strokeWidth={2}
+              />
+            </>
           )}
         </Layer>
       </Stage>
