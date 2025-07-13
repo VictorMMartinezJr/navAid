@@ -2,28 +2,57 @@ import { useContext } from "react";
 import DestinationSearchbar from "./DestinationSearchbar";
 import NavigationContext from "../context/NavigationContext";
 import StartingPointSearchbar from "./StartingPointSearchbar";
+import { rooms } from "../util/rooms";
 import QuickLinks from "./QuickLinks";
+import { dijkstra } from "../util/dijkstra";
+import { graph } from "../util/graph";
+
 const Start = () => {
-  const { destination, setPath, setStartAndDestinationSubmitted } =
-    useContext(NavigationContext);
+  const {
+    destination,
+    startingPoint,
+    setPath,
+    setStartAndDestinationSubmitted,
+    instructions,
+    setInstructions,
+  } = useContext(NavigationContext);
 
-  const generateMockPath = (start, end) => {
-    console.log("Calculating path from:", start, "to:", end);
+  const generateInstructions = (nodePath) => {
+    const steps = [];
 
-    // Later you’ll replace this with real Dijkstra logic
-    return [
-      { x: 100, y: 100 },
-      { x: 250, y: 200 },
-      { x: 400, y: 350 },
-    ];
+    for (let i = 0; i < nodePath.length - 1; i++) {
+      const from = nodePath[i];
+      const to = nodePath[i + 1];
+      const edge = graph[from]?.find((e) => e.node === to);
+      const direction = edge?.direction || `Go from ${from} to ${to}`;
+      steps.push(`Step ${i + 1}: ${direction}`);
+    }
+
+    console.log(steps);
+
+    return steps;
   };
 
   const handleClick = (e) => {
     e.preventDefault();
 
-    const newPath = generateMockPath(destination, destination);
-    setPath(newPath);
+    const startKey = startingPoint?.toLowerCase().trim();
+    const endKey = destination?.toLowerCase().trim();
+
+    if (!graph[startKey] || !graph[endKey]) {
+      console.error("Invalid start or destination node");
+      return;
+    }
+
+    const nodePath = dijkstra(graph, startKey, endKey);
+    const coordPath = nodePath.map((roomName) => rooms[roomName]);
+
+    setPath(coordPath);
     setStartAndDestinationSubmitted(true);
+    // Generate and store directions
+    const directions = generateInstructions(nodePath);
+    setInstructions(directions);
+    console.log(instructions);
   };
 
   return (
