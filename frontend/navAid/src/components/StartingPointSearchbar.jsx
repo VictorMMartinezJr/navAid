@@ -4,23 +4,17 @@ import NavigationContext from "../context/NavigationContext";
 const StartingPointSearchbar = () => {
   const { startingPoint, setStartingPoint } = useContext(NavigationContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (startingPoint) {
-    }
-  };
-
   return (
     <form
-      onSubmit={handleSubmit}
-      className="relative flex justify-between items-center w-[70%]"
+      onSubmit={(e) => e.preventDefault()}
+      className="relative flex justify-between items-center w-full"
     >
       <input
-        className="border-2  border-gray-400 rounded-full p-2 w-full"
+        className="bg-[#444444] rounded-lg p-2 w-full text-white"
         type="text"
-        value={startingPoint}
+        value={startingPoint ?? ""}
         onChange={(e) => {
-          const value = e.target.value.trim();
+          const value = e.target.value;
           setStartingPoint(value === "" ? null : value);
         }}
         placeholder="Starting Point"
