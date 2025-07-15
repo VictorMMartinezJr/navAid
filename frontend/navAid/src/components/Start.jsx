@@ -11,27 +11,13 @@ const Start = () => {
   const {
     destination,
     startingPoint,
+    path,
     setPath,
+    setLinePath,
     setStartAndDestinationSubmitted,
-    instructions,
-    setInstructions,
+
+    generateInstructions,
   } = useContext(NavigationContext);
-
-  const generateInstructions = (nodePath) => {
-    const steps = [];
-
-    for (let i = 0; i < nodePath.length - 1; i++) {
-      const from = nodePath[i];
-      const to = nodePath[i + 1];
-      const edge = graph[from]?.find((e) => e.node === to);
-      const direction = edge?.direction || `Go from ${from} to ${to}`;
-      steps.push(`Step ${i + 1}: ${direction}`);
-    }
-
-    console.log(steps);
-
-    return steps;
-  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -44,15 +30,16 @@ const Start = () => {
       return;
     }
 
-    const nodePath = dijkstra(graph, startKey, endKey);
-    const coordPath = nodePath.map((roomName) => rooms[roomName]);
+    const generatedPath = dijkstra(graph, startKey, endKey);
+    setPath(generatedPath);
+    console.log(path);
+    console.log(generatedPath);
 
-    setPath(coordPath);
+    const coordPath = generatedPath.map((roomName) => rooms[roomName]);
+
+    setLinePath(coordPath);
+
     setStartAndDestinationSubmitted(true);
-    // Generate and store directions
-    const directions = generateInstructions(nodePath);
-    setInstructions(directions);
-    console.log(instructions);
   };
 
   return (
