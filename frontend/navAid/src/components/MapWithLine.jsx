@@ -42,53 +42,25 @@ export default function MapWithLine({ currentRoom }) {
   }, [image]);
 
   // Zoom toward path center when path changes
+  // Zoom toward path center when path changes
   useEffect(() => {
-    if (
-      linePath.length === 0 ||
-      !stageRef.current ||
-      !containerRef.current ||
-      !image
-    )
+    if (!userMarker || !stageRef.current || !containerRef.current || !image)
       return;
 
     const stage = stageRef.current;
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
 
-    const xs = linePath.map((p) => p.x);
-    const ys = linePath.map((p) => p.y);
-    const minX = Math.min(...xs);
-    const maxX = Math.max(...xs);
-    const minY = Math.min(...ys);
-    const maxY = Math.max(...ys);
+    const zoom = 2; // Zoom level you want (adjust as needed)
 
-    const linePathWidth = maxX - minX;
-    const linePathHeight = maxY - minY;
-
-    // Padding around the path (in pixels)
-    const padding = 100;
-
-    // Calculate scale to fit path + padding into container
-    const scaleX = containerWidth / (linePathWidth + padding * 2);
-    const scaleY = containerHeight / (linePathHeight + padding * 2);
-    const rawScale = Math.min(scaleX, scaleY);
-
-    // Clamp zoom to never zoom out beyond 1 (100%) or zoom in beyond 2 (200%)
-    const scale = Math.min(Math.max(rawScale, 1), 2);
-
-    // Center of the path
-    const centerX = (minX + maxX) / 2;
-    const centerY = (minY + maxY) / 2;
-
-    // Calculate new position to center path in container
-    const newX = containerWidth / 2 - centerX * scale;
-    const newY = containerHeight / 2 - centerY * scale;
+    const newX = containerWidth / 2 - userMarker.x * zoom;
+    const newY = containerHeight / 2 - userMarker.y * zoom;
 
     new Konva.Tween({
       node: stage,
       duration: 0.6,
-      scaleX: scale,
-      scaleY: scale,
+      scaleX: zoom,
+      scaleY: zoom,
       x: newX,
       y: newY,
       easing: Konva.Easings.EaseInOut,
@@ -96,7 +68,7 @@ export default function MapWithLine({ currentRoom }) {
         stage.batchDraw();
       },
     }).play();
-  }, [linePath, image]);
+  }, [userMarker, image]);
 
   useEffect(() => {
     if (!userMarker || !markerRef.current) return;
