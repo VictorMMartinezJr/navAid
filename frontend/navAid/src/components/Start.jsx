@@ -6,6 +6,7 @@ import { rooms } from "../util/rooms";
 import QuickLinks from "./QuickLinks";
 import { dijkstra } from "../util/dijkstra";
 import { graph } from "../util/graph";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Start = () => {
   const {
@@ -15,8 +16,7 @@ const Start = () => {
     setPath,
     setLinePath,
     setStartAndDestinationSubmitted,
-
-    generateInstructions,
+    setCurrentStep,
   } = useContext(NavigationContext);
 
   const handleClick = (e) => {
@@ -32,20 +32,28 @@ const Start = () => {
 
     const generatedPath = dijkstra(graph, startKey, endKey);
     setPath(generatedPath);
-    console.log(path);
-    console.log(generatedPath);
 
     const coordPath = generatedPath.map((roomName) => rooms[roomName]);
 
     setLinePath(coordPath);
+    setCurrentStep(0);
 
     setStartAndDestinationSubmitted(true);
   };
 
   return (
-    <div className="absolute bottom-0 left-0 z-20 h-[35vh] w-full bg-[#303030] flex flex-col justify-around items-center px-2">
+    <div className="start absolute bottom-0 left-0 z-20 h-[35vh] w-full bg-[#303030] flex flex-col justify-around items-center px-2">
       <div className="flex flex-col w-full gap-4">
-        {destination && <StartingPointSearchbar />}
+        {destination && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <StartingPointSearchbar />
+          </motion.div>
+        )}
+
         <DestinationSearchbar />
 
         <div className="flex justify-end items-center">
