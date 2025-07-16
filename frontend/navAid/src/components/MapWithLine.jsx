@@ -1,15 +1,18 @@
 import { Stage, Layer, Line, Circle, Image as KonvaImage } from "react-konva";
 import { useEffect, useRef, useState, useContext } from "react";
 import NavigationContext from "../context/NavigationContext";
-import map from "../assets/map.jpg";
+import map from "../assets/buildingMap.jpg";
+import { rooms } from "../util/rooms";
 
-export default function MapWithLine() {
-  const { path } = useContext(NavigationContext);
+export default function MapWithLine({ currentRoom }) {
+  const { linePath } = useContext(NavigationContext);
   const containerRef = useRef(null);
   const [image, setImage] = useState(null);
   const stageRef = useRef(null);
+  const userMarker = currentRoom ? rooms[currentRoom] : null;
+  const markerRef = useRef(null);
 
-  // Load image manually for full control
+  // Load map
   useEffect(() => {
     const img = new window.Image();
     img.src = map;
@@ -41,7 +44,7 @@ export default function MapWithLine() {
   // Zoom toward path center when path changes
   useEffect(() => {
     if (
-      path.length === 0 ||
+      linePath.length === 0 ||
       !stageRef.current ||
       !containerRef.current ||
       !image
@@ -52,22 +55,22 @@ export default function MapWithLine() {
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
 
-    const xs = path.map((p) => p.x);
-    const ys = path.map((p) => p.y);
+    const xs = linePath.map((p) => p.x);
+    const ys = linePath.map((p) => p.y);
     const minX = Math.min(...xs);
     const maxX = Math.max(...xs);
     const minY = Math.min(...ys);
     const maxY = Math.max(...ys);
 
-    const pathWidth = maxX - minX;
-    const pathHeight = maxY - minY;
+    const linePathWidth = maxX - minX;
+    const linePathHeight = maxY - minY;
 
     // Padding around the path (in pixels)
     const padding = 100;
 
     // Calculate scale to fit path + padding into container
-    const scaleX = containerWidth / (pathWidth + padding * 2);
-    const scaleY = containerHeight / (pathHeight + padding * 2);
+    const scaleX = containerWidth / (linePathWidth + padding * 2);
+    const scaleY = containerHeight / (linePathHeight + padding * 2);
     const rawScale = Math.min(scaleX, scaleY);
 
     // Clamp zoom to never zoom out beyond 1 (100%) or zoom in beyond 2 (200%)
@@ -93,10 +96,34 @@ export default function MapWithLine() {
         stage.batchDraw();
       },
     }).play();
-  }, [path, image]);
+  }, [linePath, image]);
 
-  const flatPoints = path.flatMap((p) => [p.x, p.y]);
-  const endPoint = path[path.length - 1];
+  useEffect(() => {
+    if (!userMarker || !markerRef.current) return;
+
+    const marker = markerRef.current;
+
+    if (marker.x() === 0 && marker.y() === 0) {
+      // First time: set position manually
+      marker.position({ x: userMarker.x, y: userMarker.y });
+      marker.getLayer().batchDraw();
+      return;
+    }
+
+    new Konva.Tween({
+      node: marker,
+      duration: 0.5,
+      x: userMarker.x,
+      y: userMarker.y,
+      easing: Konva.Easings.EaseInOut,
+      onFinish: () => {
+        marker.getLayer().batchDraw();
+      },
+    }).play();
+  }, [userMarker]);
+
+  const flatPoints = linePath.flatMap((p) => [p.x, p.y]);
+  const endPoint = linePath[linePath.length - 1];
 
   return (
     <div
@@ -123,17 +150,26 @@ export default function MapWithLine() {
                 <Line
                   points={flatPoints}
                   stroke="blue"
-                  strokeWidth={4}
+                  strokeWidth={8}
                   lineCap="round"
                   lineJoin="round"
+                />
+                <Circle
+                  ref={markerRef}
+                  radius={8}
+                  fill="blue"
+                  stroke="white"
+                  strokeWidth={2}
+                  shadowBlur={10}
                 />
                 <Circle
                   x={endPoint?.x}
                   y={endPoint?.y}
                   radius={8}
-                  fill="blue"
-                  stroke="white"
+                  fill="darkblue"
+                  stroke="blue"
                   strokeWidth={2}
+                  shadowBlur={10}
                 />
               </>
             )}
