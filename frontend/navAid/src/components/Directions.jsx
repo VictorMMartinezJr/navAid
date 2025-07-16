@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import NavigationContext from "../context/NavigationContext";
-import { FaArrowRight, FaArrowLeft, FaArrowUp } from "react-icons/fa";
+import { FcRight, FcLeft, FcUp } from "react-icons/fc";
 import { MdLocationPin } from "react-icons/md";
 import { rooms } from "../util/rooms";
 
@@ -13,8 +13,9 @@ const Directions = () => {
     setStartAndDestinationSubmitted,
     generateInstructions,
     path,
+    currentStep,
+    setCurrentStep,
   } = useContext(NavigationContext);
-  const [currentStep, setCurrentStep] = useState(0);
   const [arrived, setArrived] = useState(false);
   const [directionArrow, setDirectionArrow] = useState("");
 
@@ -28,6 +29,8 @@ const Directions = () => {
       setPath([]);
       setLinePath([]);
       setStartAndDestinationSubmitted(false);
+      setCurrentStep(0);
+
       return;
     }
 
@@ -41,7 +44,9 @@ const Directions = () => {
       const newLinePath = remainingRoomNames.map((roomName) => {
         return rooms[roomName];
       });
-      setLinePath(newLinePath);
+      setTimeout(() => {
+        setLinePath(newLinePath);
+      }, 200);
     } else {
       setArrived(true);
       setLinePath([]);
@@ -50,9 +55,9 @@ const Directions = () => {
 
   const getDirectionIcon = () => {
     if (arrived) return <MdLocationPin />;
-    if (directionArrow === "right") return <FaArrowRight />;
-    if (directionArrow === "left") return <FaArrowLeft />;
-    return <FaArrowUp />;
+    if (directionArrow === "right") return <FcRight />;
+    if (directionArrow === "left") return <FcLeft />;
+    return <FcUp />;
   };
 
   useEffect(() => {
@@ -66,8 +71,8 @@ const Directions = () => {
   }, [currentStep, steps]);
 
   return (
-    <div className="absolute top-0 left-0 z-20 h-[8vh] w-full bg-[#303030] flex justify-between items-center px-2">
-      <div className="flex justify-center items-center gap-4 text-white text-xl">
+    <div className="absolute top-0 left-0 z-20 h-[10vh] w-full bg-[#303030] flex justify-between items-center px-2">
+      <div className="flex justify-center items-center gap-4 text-white text-4xl">
         {getDirectionIcon()}
         <p className="text-white text-xl font-bold">
           {arrived ? "Arrived" : steps[currentStep]}
