@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import { graph } from "../util/graph";
 
 const NavigationContext = createContext();
@@ -11,17 +11,42 @@ export const NavigationProvider = ({ children }) => {
   const [path, setPath] = useState([]);
   const [linePath, setLinePath] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const stageRef = useRef();
+  const [initialStageResetFn, setInitialStageResetFn] = useState(null);
 
-  const generateInstructions = (nodePath) => {
+  const generateInstructions = (nodePath, graph) => {
     const steps = [];
 
     for (let i = 0; i < nodePath.length - 1; i++) {
       const from = nodePath[i];
       const to = nodePath[i + 1];
-      const edge = graph[from]?.find((e) => e.node === to);
-      const direction = edge?.direction || `Go from ${from} to ${to}`;
+      const prev = i > 0 ? nodePath[i - 1] : null;
+
+      const edges = graph[from];
+      const edge = edges ? edges.find((e) => e.node === to) : null;
+
+      let direction;
+
+      if (edge) {
+        // If directionFrom exists and prev node matches a key, use that
+        if (edge.directionFrom && prev && edge.directionFrom[prev]) {
+          direction = edge.directionFrom[prev];
+        }
+        // Otherwise, use general direction if present
+        else if (edge.direction) {
+          direction = edge.direction;
+        }
+        // Else default text
+        else {
+          direction = `Go from ${from} to ${to}`;
+        }
+      } else {
+        direction = `Go from ${from} to ${to}`;
+      }
+
       steps.push(`${direction}`);
     }
+
     return steps;
   };
 
@@ -39,6 +64,9 @@ export const NavigationProvider = ({ children }) => {
     generateInstructions,
     currentStep,
     setCurrentStep,
+    stageRef,
+    initialStageResetFn,
+    setInitialStageResetFn,
   };
 
   return (
