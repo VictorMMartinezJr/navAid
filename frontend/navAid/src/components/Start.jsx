@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import DestinationSearchbar from "./DestinationSearchbar";
 import NavigationContext from "../context/NavigationContext";
 import StartingPointSearchbar from "./StartingPointSearchbar";
@@ -7,8 +7,11 @@ import QuickLinks from "./QuickLinks";
 import { dijkstra } from "../util/dijkstra";
 import { graph } from "../util/graph";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 const Start = () => {
+  const [shakeStartInput, setShakeStartInput] = useState(false);
+  const [shakeDestinationInput, setShakeDestinationInput] = useState(false);
   const {
     destination,
     startingPoint,
@@ -18,8 +21,8 @@ const Start = () => {
     setCurrentStep,
   } = useContext(NavigationContext);
 
-  const normalize = (str) => str.toLowerCase().replace(/\s+/g, ""); // make lowercase and extract whitespace
-  const extractDigits = (str) => str.match(/\d+/g)?.join("") || ""; // extract digits
+  const normalize = (str) => str.toLowerCase().replace(/\s+/g, "");
+  const extractDigits = (str) => str.match(/\d+/g)?.join("") || "";
   const isNumeric = (str) => /^\d+$/.test(str);
 
   const findBestMatch = (input) => {
@@ -29,16 +32,20 @@ const Start = () => {
     const inputDigits = extractDigits(input);
     const allRoomNames = Object.keys(rooms);
 
+    // If input is numeric, only accept exact digit match
+    if (isNumeric(input)) {
+      for (let name of allRoomNames) {
+        const nameDigits = extractDigits(name);
+        if (inputDigits === nameDigits) {
+          return name;
+        }
+      }
+      return null; // no exact digit match found
+    }
+
+    // Input not numeric, fallback to partial string match
     for (let name of allRoomNames) {
       const nameNorm = normalize(name);
-      const nameDigits = extractDigits(name);
-
-      // Prefer digit match if input is purely numeric (e.g., "227")
-      if (isNumeric(input) && inputDigits === nameDigits) {
-        return name;
-      }
-
-      // Fallback to general name matching
       if (nameNorm.includes(inputNorm) || inputNorm.includes(nameNorm)) {
         return name;
       }
@@ -53,8 +60,15 @@ const Start = () => {
     const startKey = findBestMatch(startingPoint);
     const endKey = findBestMatch(destination);
 
-    if (!startKey || !endKey) {
-      alert("Start or destination not found. Please check your input.");
+    if (!startKey) {
+      setShakeStartInput(true);
+      toast.error("Starting point not found.");
+      return;
+    }
+
+    if (!endKey) {
+      setShakeDestinationInput(true);
+      toast.error("Destination not found.");
       return;
     }
 
@@ -78,11 +92,17 @@ const Start = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <StartingPointSearchbar />
+            <StartingPointSearchbar
+              shake={shakeStartInput}
+              setShake={setShakeStartInput}
+            />
           </motion.div>
         )}
 
-        <DestinationSearchbar />
+        <DestinationSearchbar
+          shake={shakeDestinationInput}
+          setShake={setShakeDestinationInput}
+        />
 
         <div className="flex justify-end items-center">
           <button
