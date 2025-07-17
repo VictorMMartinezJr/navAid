@@ -6,27 +6,55 @@ import { rooms } from "../util/rooms";
 import QuickLinks from "./QuickLinks";
 import { dijkstra } from "../util/dijkstra";
 import { graph } from "../util/graph";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Start = () => {
   const {
     destination,
     startingPoint,
-    path,
     setPath,
     setLinePath,
     setStartAndDestinationSubmitted,
     setCurrentStep,
   } = useContext(NavigationContext);
 
+  const normalize = (str) => str.toLowerCase().replace(/\s+/g, ""); // make lowercase and extract whitespace
+  const extractDigits = (str) => str.match(/\d+/g)?.join("") || ""; // extract digits
+  const isNumeric = (str) => /^\d+$/.test(str);
+
+  const findBestMatch = (input) => {
+    if (!input) return null;
+
+    const inputNorm = normalize(input);
+    const inputDigits = extractDigits(input);
+    const allRoomNames = Object.keys(rooms);
+
+    for (let name of allRoomNames) {
+      const nameNorm = normalize(name);
+      const nameDigits = extractDigits(name);
+
+      // Prefer digit match if input is purely numeric (e.g., "227")
+      if (isNumeric(input) && inputDigits === nameDigits) {
+        return name;
+      }
+
+      // Fallback to general name matching
+      if (nameNorm.includes(inputNorm) || inputNorm.includes(nameNorm)) {
+        return name;
+      }
+    }
+
+    return null;
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
 
-    const startKey = startingPoint?.toLowerCase().trim();
-    const endKey = destination?.toLowerCase().trim();
+    const startKey = findBestMatch(startingPoint);
+    const endKey = findBestMatch(destination);
 
-    if (!graph[startKey] || !graph[endKey]) {
-      console.error("Invalid start or destination node");
+    if (!startKey || !endKey) {
+      alert("Start or destination not found. Please check your input.");
       return;
     }
 
