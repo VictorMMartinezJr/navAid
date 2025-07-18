@@ -61,8 +61,22 @@ const Directions = () => {
         setLinePath(newLinePath);
       }, 200);
     } else {
-      setArrived(true);
-      setLinePath([]);
+      // Move to final destination before showing "Arrived"
+      const finalStep = currentStep + 1;
+      setCurrentStep(finalStep);
+
+      const remainingRoomNames = path.slice(finalStep);
+      const newLinePath = remainingRoomNames.map((roomName) => rooms[roomName]);
+
+      setTimeout(() => {
+        setLinePath(newLinePath);
+
+        // Wait for user marker animation then set Arrived to true
+        setTimeout(() => {
+          setArrived(true);
+          setLinePath([]);
+        }, 600);
+      }, 200);
     }
   };
 
@@ -75,6 +89,8 @@ const Directions = () => {
 
   // Set which arrow to show in direction
   useEffect(() => {
+    if (!steps[currentStep]) return;
+
     if (steps[currentStep].toLowerCase().includes("right")) {
       setDirectionArrow("right");
     } else if (steps[currentStep].toLowerCase().includes("left")) {
