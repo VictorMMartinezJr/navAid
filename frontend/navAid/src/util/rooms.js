@@ -3,6 +3,24 @@ export const rooms = {
   "main entrance": { x: 639, y: 678 },
   "one stop": { x: 668, y: 638 },
 
+  // Hall 100
+  "hall 100 lower mid": { x: 98, y: 492 },
+  "hall 100 hall 600 meet": { x: 97, y: 321 },
+
+  // Room hall 100
+  "room 101": { x: 84, y: 640 },
+  "room 102": { x: 111, y: 563 },
+  "room 103": { x: 83, y: 590 },
+  "room 104": { x: 111, y: 491 },
+  "room 105": { x: 84, y: 507 },
+  "room 106": { x: 111, y: 478 },
+  "room 107": { x: 84, y: 485 },
+  "room 108": { x: 110, y: 414 },
+  "room 108A": { x: 143, y: 341 },
+  "room 109": { x: 85, y: 399 },
+  "room 110": { x: 110, y: 341 },
+  "room 111": { x: 84, y: 346 },
+
   // Hall 200 right
   "hall 200 start right": { x: 671, y: 705 },
   "hall 200 right mid": { x: 772, y: 705 },
