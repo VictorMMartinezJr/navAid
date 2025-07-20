@@ -19,7 +19,7 @@ export const rooms = {
   "hall 200 hall 700 meet": { x: 610, y: 582 },
   "hall 200 hall 1100 meet": { x: 854, y: 704 },
   "hall 200 hall 500 meet": { x: 353, y: 582 },
-  "hall 200 hall 300 meet": { x: 224, y: 582 },
+  "hall 200 hall 300 meet": { x: 226, y: 582 },
   "hall 200 hall 100 meet": { x: 96, y: 582 },
 
   // Rooms 200s sorted
@@ -39,6 +39,23 @@ export const rooms = {
 
   // Recruitment
   "room 219 recruitment": { x: 534, y: 592 },
+
+  // Hall 300
+  "hall 300 mid": { x: 226, y: 448 },
+  "hall 300 hall 600 meet": { x: 226, y: 319 },
+
+  // Rooms hall 300
+  "room 301": { x: 214, y: 519 },
+  "room 302": { x: 238, y: 563 },
+  "room 303": { x: 214, y: 506 },
+  "room 305": { x: 216, y: 440 },
+  "room 306": { x: 239, y: 487 },
+  "room 308": { x: 239, y: 388 },
+  "room 309": { x: 216, y: 406 },
+  "room 309A": { x: 215, y: 427 },
+  "room 310": { x: 238, y: 377 },
+  "room 311": { x: 215, y: 339 },
+  "room 312": { x: 238, y: 339 },
 
   // Hall 1100
   "hall 1100 start": { x: 854, y: 770 },
