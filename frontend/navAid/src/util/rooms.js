@@ -66,7 +66,7 @@ export const rooms = {
 
   // Hall 300
   "hall 300 mid": { x: 226, y: 448 },
-  "hall 300 hall 600 meet": { x: 226, y: 319 },
+  "hall 300 hall 600 meet": { x: 226, y: 321 },
 
   // Rooms hall 300
   "room 301": { x: 214, y: 519 },
@@ -114,10 +114,33 @@ export const rooms = {
   "room 506": { x: 327, y: 727 },
   "room 513": { x: 342, y: 618 },
 
+  "room 521A": { x: 305, y: 333 },
+
+  // Hall 600
+  "room 603": { x: 413, y: 335 },
+  "hall 600 hall 500 meet": { x: 354, y: 321 },
+  "hall 600 right mid": { x: 488, y: 321 },
+  "hall 600 hall 700 meet": { x: 612, y: 321 },
+
+  // Rooms hall 600
+  "room 602": { x: 142, y: 309 },
+  "room 604": { x: 195, y: 310 },
+  "room 606": { x: 240, y: 309 },
+  "room 608": { x: 253, y: 309 },
+  "room 612": { x: 420, y: 310 },
+  "room 614": { x: 488, y: 310 },
+  "room 616": { x: 543, y: 310 },
+  "room 609": { x: 530, y: 332 },
+  "room 607": { x: 490, y: 333 },
+  "room 605": { x: 438, y: 333 },
+
   // Room 700s and hall 700 connections
   "room 701 academic affairs": { x: 600, y: 490 },
   "room 704 police": { x: 625, y: 530 },
   "hall 700 hall 400 meet": { x: 611, y: 447 },
+
+  //Rooms hall 700
+  "room 709": { x: 557, y: 333 },
 
   // Other areas
   "room 127": { x: 83, y: 73 },
