@@ -105,6 +105,21 @@ export const graph = {
       },
     },
     {
+      node: "hall 300 hall 600 meet",
+      weight: 1,
+      direction: "Turn left",
+      directionFrom: {
+        "hall 100 lower mid": "Turn right",
+        "room 111": "Turn right",
+        "room 109": "Turn right",
+        "room 107": "Turn right",
+        "room 106": "Turn right",
+        "room 108": "Turn right",
+        "room 108A": "Turn right",
+        "room 110": "Turn right",
+      },
+    },
+    {
       node: "room 110",
       weight: 1,
       direction: "Slight left into room 110",
@@ -250,21 +265,6 @@ export const graph = {
         "room 108": "Turn right then a slight left into room 606",
         "room 108A": "Turn right then a slight left into room 606",
         "room 110": "Turn right then a slight left into room 606",
-      },
-    },
-    {
-      node: "hall 300 hall 600 meet",
-      weight: 1,
-      direction: "Turn left",
-      directionFrom: {
-        "hall 100 lower mid": "Turn right",
-        "room 111": "Turn right",
-        "room 109": "Turn right",
-        "room 107": "Turn right",
-        "room 106": "Turn right",
-        "room 108": "Turn right",
-        "room 108A": "Turn right",
-        "room 110": "Turn right",
       },
     },
   ], // Done
@@ -1085,6 +1085,97 @@ export const graph = {
   ],
   // Done
 
+  // Hall 1100
+  "hall 1100 hall 400 meet": [
+    {
+      node: "hall 1100 lower mid",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 400 hall 900 meet": "Turn right",
+        "room 414": "Turn right",
+        "room 411": "Turn right",
+      },
+    },
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 1100 upper mid": "Turn right",
+        "hall 1100 lower mid": "Turn left",
+        "room 1105": "Turn left",
+        "room 1112": "Turn left",
+        "room 1110": "Turn left",
+      },
+    },
+    {
+      node: "room 1105",
+      weight: 1,
+      direction: "Slight right into room 1105",
+      directionFrom: {
+        "hall 400 hall 900 meet":
+          "Turn right then a slight right into room 1105",
+        "room 414": "Turn right then a slight right into room 1105",
+        "room 414": "Turn right then a slight right into room 1105",
+      },
+    },
+    {
+      node: "room 1112",
+      weight: 1,
+      direction: "Slight left into room 1112",
+      directionFrom: {
+        "hall 400 hall 900 meet":
+          "Turn right then a slight left into room 1112",
+        "room 414": "Turn right then a slight left into room 1112",
+        "room 414": "Turn right then a slight left into room 1112",
+      },
+    },
+    {
+      node: "room 1110",
+      weight: 1,
+      direction: "Slight left into room 1110",
+      directionFrom: {
+        "hall 400 hall 900 meet":
+          "Turn right then a slight left into room 1110",
+        "room 414": "Turn right then a slight left into room 1110",
+        "room 414": "Turn right then a slight left into room 1110",
+      },
+    },
+    {
+      node: "room 1109",
+      weight: 1,
+      direction: "Slight left into room 1109",
+      directionFrom: {
+        "hall 400 hall 900 meet": "Turn left then a slight left into room 1109",
+        "room 414": "Turn left then a slight left into room 1109",
+        "room 414": "Turn left then a slight left into room 1109",
+      },
+    },
+    {
+      node: "room 1120",
+      weight: 1,
+      direction: "Slight right into room 1120",
+      directionFrom: {
+        "hall 400 hall 900 meet":
+          "Turn left then a slight right into room 1120",
+        "room 414": "Turn left then a slight right into room 1120",
+        "room 414": "Turn left then a slight right into room 1120",
+      },
+    },
+    {
+      node: "room 1122",
+      weight: 1,
+      direction: "Slight right into room 1122",
+      directionFrom: {
+        "hall 400 hall 900 meet":
+          "Turn left then a slight right into room 1122",
+        "room 414": "Turn left then a slight right into room 1122",
+        "room 414": "Turn left then a slight right into room 1122",
+      },
+    },
+  ], // Done
+
   // Rooms hall 1100 - Done
   "room 1101": [
     { node: "hall 200 hall 1100 meet", weight: 1, direction: "Turn right" },
@@ -1340,7 +1431,28 @@ export const graph = {
       direction: "Continue straight",
       directionFrom: { "hall 200 left mid": "Turn right" },
     },
-    { node: "hall 200 left mid", weight: 1, direction: "Turn left" },
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 200 left mid": "Turn left",
+        "room 215": "Turn left",
+        "room 216": "Turn left",
+        "room 218": "Turn left",
+        "room 219": "Turn left",
+      },
+    },
+    {
+      node: "hall 200 left mid",
+      weight: 1,
+      direction: "Turn left",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn right",
+        "room 701 academic affairs": "Turn right",
+        "hall 704 police": "Turn right",
+      },
+    },
     {
       node: "room 219 recruitment",
       weight: 1,
@@ -1375,17 +1487,36 @@ export const graph = {
       },
     },
     {
-      node: "room 704 campus police",
+      node: "room 704 police",
       weight: 1,
       direction: "Slight right to room 704 - Campus Police",
+      directionFrom: {
+        "hall 200 left mid":
+          "Turn left then a slight right to room 704 - Campus Police",
+        "room 215": "Turn left then a slight right to room 704 - Campus Police",
+        "room 216": "Turn left then a slight right to room 704 - Campus Police",
+        "room 218": "Turn left then a slight right to room 704 - Campus Police",
+        "room 219": "Turn left then a slight right to room 704 - Campus Police",
+      },
     },
     {
-      node: "room 701",
+      node: "room 701 academic affairs",
       weight: 1,
-      direction: "Slight left to room 701",
+      direction: "Slight left to room 701 - Academic Affairs",
+      directionFrom: {
+        "hall 200 left mid":
+          "Turn left then a slight left to room 701 - Academic Affairs",
+        "room 215":
+          "Turn left then a slight left to room 701 - Academic Affairs",
+        "room 216":
+          "Turn left then a slight left to room 701 - Academic Affairs",
+        "room 218":
+          "Turn left then a slight left to room 701 - Academic Affairs",
+        "room 219":
+          "Turn left then a slight left to room 701 - Academic Affairs",
+      },
     },
-  ],
-  // Done
+  ], // Done
 
   // Hall 200 hall 500 meet - Add 400s
   "hall 200 hall 500 meet": [
@@ -1407,6 +1538,23 @@ export const graph = {
         "hall 500 hall 400 meet": "Turn right",
         "hall 500 start": "Turn left",
         "room 513": "Turn left",
+      },
+    },
+    {
+      node: "hall 500 hall 400 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 200 left mid": "Turn right",
+        "room 212": "Turn right",
+        "room 214": "Turn right",
+        "room 209": "Turn right",
+        "room 211": "Turn right",
+        "room 213": "Turn right",
+        "hall 200 hall 300 meet": "Turn left",
+        "room 207": "Turn left",
+        "room 208": "Turn left",
+        "room 210": "Turn left",
       },
     },
     {
@@ -2384,8 +2532,385 @@ export const graph = {
         "room 308": "Turn right",
       },
     },
+    {
+      node: "hall 100 hall 600 meet",
+      weight: 1,
+      direction: "Continue Straight",
+      directionFrom: {
+        "hall 300 mid": "Turn left",
+        "room 311": "Turn left",
+        "room 312": "Turn left",
+        "room 310": "Turn left",
+        "room 309": "Turn left",
+        "room 308": "Turn left",
+      },
+    },
   ],
   // Done
+
+  // Hall 400
+  "hall 400 hall 900 meet": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 900 mid": "Turn right",
+      },
+    },
+    {
+      node: "hall 1100 hall 400 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 900 mid": "Turn left",
+      },
+    },
+    {
+      node: "room 409",
+      weight: 1,
+      direction: "Slight left into room 409",
+      directionFrom: {
+        "hall 900 mid": "Turn right then a slight left into room 409",
+      },
+    },
+    {
+      node: "room 412",
+      weight: 1,
+      direction: "Slight right into room 412",
+      directionFrom: {
+        "hall 900 mid": "Turn right then a slight right into room 412",
+      },
+    },
+    {
+      node: "room 411",
+      weight: 1,
+      direction: "Slight right into room 411",
+      directionFrom: {
+        "hall 900 mid": "Turn left then a slight right into room 411",
+      },
+    },
+    {
+      node: "room 414",
+      weight: 1,
+      direction: "Slight left into room 414",
+      directionFrom: {
+        "hall 900 mid": "Turn left then a slight left into room 414",
+      },
+    },
+  ], // Done
+  "hall 400 left mid": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Continue straight",
+    },
+    {
+      node: "hall 500 hall 400 meet",
+      weight: 1,
+      direction: "Continue straight",
+    },
+    {
+      node: "room 402",
+      weight: 1,
+      direction: "Slight right into room 402",
+    },
+    {
+      node: "room 404",
+      weight: 1,
+      direction: "Slight right into room 404",
+    },
+    {
+      node: "room 401",
+      weight: 1,
+      direction: "Slight left into room 401",
+    },
+    {
+      node: "room 403",
+      weight: 1,
+      direction: "Slight left into room 403",
+    },
+    {
+      node: "room 406",
+      weight: 1,
+      direction: "Slight left into room 406",
+    },
+    {
+      node: "room 408",
+      weight: 1,
+      direction: "Slight left into room 408",
+    },
+    {
+      node: "room 410",
+      weight: 1,
+      direction: "Slight left into room 410",
+    },
+    {
+      node: "room 405",
+      weight: 1,
+      direction: "Slight right into room 405",
+    },
+  ], // Done
+
+  // Rooms hall 400
+  "room 412": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1.1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1.1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 409",
+      weight: 1.1,
+      direction:
+        "Turn left then a slight right into room 409 - Assessment Center",
+    },
+  ], // Done
+  "room 409 assessment center": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 412",
+      weight: 1,
+      direction: "Turn left then a slight right into room 412",
+    },
+  ],
+  "room 414": [
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 1100 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 411",
+      weight: 1,
+      direction: "Turn left then a slight right into room 411",
+    },
+  ],
+  "room 411": [
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 1100 hall 400 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 414",
+      weight: 1,
+      direction: "Turn right then a slight right into room 414",
+    },
+  ], // Done
+  "room 410": [
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 405",
+      weight: 1,
+      direction: "Turn right then a slight left into room 405",
+    },
+    {
+      node: "room 408",
+      weight: 1,
+      direction: "Turn right then a slight right into room 408",
+    },
+    {
+      node: "room 406",
+      weight: 1,
+      direction: "Turn right then a slight right into room 406",
+    },
+  ], // Done
+  "room 405": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 410",
+      weight: 1,
+      direction: "Turn right then a slight left into room 410",
+    },
+    {
+      node: "room 408",
+      weight: 1,
+      direction: "Turn right then a slight left into room 408",
+    },
+    {
+      node: "room 406",
+      weight: 1,
+      direction: "Straight into room 406",
+    },
+  ], // Done
+  "room 406": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 410",
+      weight: 1,
+      direction: "Turn left then a slight left into room 410",
+    },
+    {
+      node: "room 408",
+      weight: 1,
+      direction: "Turn left then a slight left into room 408",
+    },
+    {
+      node: "room 405",
+      weight: 1,
+      direction: "Straight into room 405",
+    },
+  ], // Done
+  "room 408": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 410",
+      weight: 1,
+      direction: "Turn left then a slight left into room 410",
+    },
+    {
+      node: "room 406",
+      weight: 1,
+      direction: "Turn right then a slight right into room 406",
+    },
+    {
+      node: "room 405",
+      weight: 1,
+      direction: "Straight into room 405",
+    },
+  ], // Done
+  "room 403": [
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 500 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 401",
+      weight: 1,
+      direction: "Turn left then a slight left into room 401",
+    },
+    {
+      node: "room 404",
+      weight: 1,
+      direction: "Straight into room 401",
+    },
+    {
+      node: "room 402",
+      weight: 1,
+      direction: "Turn left then a slight right into room 402",
+    },
+  ], // Done
+  "room 401": [
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 500 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 404",
+      weight: 1,
+      direction: "Turn right then a slight left into room 404",
+    },
+    {
+      node: "room 402",
+      weight: 1,
+      direction: "Straight into room 402",
+    },
+    {
+      node: "room 403",
+      weight: 1,
+      direction: "Turn right then a slight right into room 403",
+    },
+  ], // Done
+  "room 402": [
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 500 hall 400 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 404",
+      weight: 1,
+      direction: "Turn left then a slight left into room 404",
+    },
+    {
+      node: "room 401",
+      weight: 1,
+      direction: "Straight into room 401",
+    },
+    {
+      node: "room 403",
+      weight: 1,
+      direction: "Turn left then a slight right into room 403",
+    },
+  ], // Done
 
   // Hall 500
   "hall 500 start": [
@@ -2404,8 +2929,7 @@ export const graph = {
       weight: 1,
       direction: "Slight left into room 513",
     },
-  ],
-  // Hall 500 bottom
+  ], // Done
   "hall 500 bottom": [
     {
       node: "hall 500 start",
@@ -2433,10 +2957,7 @@ export const graph = {
       weight: 1,
       direction: "Slight left into room 506",
     },
-  ],
-  // Done
-
-  // Hall 500 bottom mid
+  ], // Dome
   "hall 500 bottom mid": [
     {
       node: "hall 500 bottom",
@@ -2473,10 +2994,90 @@ export const graph = {
       weight: 1,
       direction: "Slight right into room 506",
     },
+  ], // Done
+  "hall 500 hall 400 meet": [
+    {
+      node: "hall 200 hall 500 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 400 left mid": "Turn left",
+        "room 401": "Turn left",
+        "room 403": "Turn left",
+        "room 402": "Turn right",
+        "room 404": "Turn right",
+      },
+    },
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 200 hall 500 meet": "Turn right",
+        "room 515": "Turn right",
+        "room 517": "Turn right",
+        "hall 600 hall 500 meet": "Turn left",
+        "room 521": "Turn left",
+        "room 519": "Turn left",
+      },
+    },
+    {
+      node: "room 402",
+      weight: 1,
+      direction: "Slight left into room 402",
+      directionFrom: {
+        "hall 200 hall 500 meet": "Turn right then a slight left into room 402",
+        "room 515": "Turn right then a slight left into room 402",
+        "room 517": "Turn right then a slight left into room 402",
+        "hall 600 hall 500 meet": "Turn left then a slight left into room 402",
+        "room 521": "Turn left then a slight left into room 402",
+        "room 519": "Turn left then a slight left into room 402",
+      },
+    },
+    {
+      node: "room 404",
+      weight: 1,
+      direction: "Slight left into room 404",
+      directionFrom: {
+        "hall 200 hall 500 meet": "Turn right then a slight left into room 404",
+        "room 515": "Turn right then a slight left into room 404",
+        "room 517": "Turn right then a slight left into room 404",
+        "hall 600 hall 500 meet": "Turn left then a slight left into room 404",
+        "room 521": "Turn left then a slight left into room 404",
+        "room 519": "Turn left then a slight left into room 404",
+      },
+    },
+    {
+      node: "room 401",
+      weight: 1,
+      direction: "Slight right into room 401",
+      directionFrom: {
+        "hall 200 hall 500 meet":
+          "Turn right then a slight right into room 401",
+        "room 515": "Turn right then a slight right into room 401",
+        "room 517": "Turn right then a slight right into room 401",
+        "hall 600 hall 500 meet": "Turn left then a slight right into room 401",
+        "room 521": "Turn left then a slight right into room 401",
+        "room 519": "Turn left then a slight right into room 401",
+      },
+    },
+    {
+      node: "room 403",
+      weight: 1,
+      direction: "Slight right into room 403",
+      directionFrom: {
+        "hall 200 hall 500 meet":
+          "Turn right then a slight right into room 403",
+        "room 515": "Turn right then a slight right into room 403",
+        "room 517": "Turn right then a slight right into room 403",
+        "hall 600 hall 500 meet": "Turn left then a slight right into room 403",
+        "room 521": "Turn left then a slight right into room 403",
+        "room 519": "Turn left then a slight right into room 403",
+      },
+    },
   ],
 
   // Rooms hall 500
-  // Bottom
   library: [
     {
       node: "hall 500 bottom mid",
@@ -2741,6 +3342,216 @@ export const graph = {
       node: "room 616",
       weight: 1,
       direction: "Slight left into room 616",
+    },
+  ], // Done
+  "hall 600 hall 700 meet": [
+    {
+      node: "hall 600 right mid",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn left",
+        "room 706": "Turn left",
+        "room 708": "Turn left",
+        "hall 800 hall 700 meet": "Turn right",
+        "room 711": "Turn right",
+        "room 710": "Turn right",
+        "room 712": "Turn right",
+        "room 713": "Turn right",
+        "room 714": "Turn right",
+        "room 715": "Turn right",
+      },
+    },
+    {
+      node: "room 616",
+      weight: 1,
+      direction: "Slight right into room 616",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn left then a slight right into room 616",
+        "room 706": "Turn left then a slight right into room 616",
+        "room 708": "Turn left then a slight right into room 616",
+        "hall 800 hall 700 meet":
+          "Turn right then a slight right into room 616",
+        "room 711": "Turn right then a slight right into room 616",
+        "room 710": "Turn right then a slight right into room 616",
+        "room 712": "Turn right then a slight right into room 616",
+        "room 713": "Turn right then a slight right into room 616",
+        "room 714": "Turn right then a slight right into room 616",
+        "room 715": "Turn right then a slight right into room 616",
+      },
+    },
+    {
+      node: "room 614",
+      weight: 1,
+      direction: "Slight right into room 614",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn left then a slight right into room 614",
+        "room 706": "Turn left then a slight right into room 614",
+        "room 708": "Turn left then a slight right into room 614",
+        "hall 800 hall 700 meet":
+          "Turn right then a slight right into room 614",
+        "room 711": "Turn right then a slight right into room 614",
+        "room 710": "Turn right then a slight right into room 614",
+        "room 712": "Turn right then a slight right into room 614",
+        "room 713": "Turn right then a slight right into room 614",
+        "room 714": "Turn right then a slight right into room 614",
+        "room 715": "Turn right then a slight right into room 614",
+      },
+    },
+    {
+      node: "room 607",
+      weight: 1,
+      direction: "Slight left into room 607",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn left then a slight left into room 607",
+        "room 706": "Turn left then a slight left into room 607",
+        "room 708": "Turn left then a slight left into room 607",
+        "hall 800 hall 700 meet": "Turn right then a slight left into room 607",
+        "room 711": "Turn right then a slight left into room 607",
+        "room 710": "Turn right then a slight left into room 607",
+        "room 712": "Turn right then a slight left into room 607",
+        "room 713": "Turn right then a slight left into room 607",
+        "room 714": "Turn right then a slight left into room 607",
+        "room 715": "Turn right then a slight left into room 607",
+      },
+    },
+    {
+      node: "room 609",
+      weight: 1,
+      direction: "Slight left into room 609",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn left then a slight left into room 609",
+        "room 706": "Turn left then a slight left into room 609",
+        "room 708": "Turn left then a slight left into room 609",
+        "hall 800 hall 700 meet": "Turn right then a slight left into room 609",
+        "room 711": "Turn right then a slight left into room 609",
+        "room 710": "Turn right then a slight left into room 609",
+        "room 712": "Turn right then a slight left into room 609",
+        "room 713": "Turn right then a slight left into room 609",
+        "room 714": "Turn right then a slight left into room 609",
+        "room 715": "Turn right then a slight left into room 609",
+      },
+    },
+    {
+      node: "room 709",
+      weight: 1,
+      direction: "Slight left into room 709",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn left then a slight left into room 709",
+        "room 706": "Turn left then a slight left into room 709",
+        "room 708": "Turn left then a slight left into room 709",
+        "hall 800 hall 700 meet": "Turn right then a slight left into room 709",
+        "room 711": "Turn right then a slight left into room 709",
+        "room 710": "Turn right then a slight left into room 709",
+        "room 712": "Turn right then a slight left into room 709",
+        "room 713": "Turn right then a slight left into room 709",
+        "room 714": "Turn right then a slight left into room 709",
+        "room 715": "Turn right then a slight left into room 709",
+      },
+    },
+    {
+      node: "room 706",
+      weight: 1,
+      direction: "Slight left into room 706",
+      directionFrom: {
+        "hall 600 right mid": "Turn right then a slight left into room 706",
+        "room 709": "Turn right then a slight left into room 706",
+        "room 609": "Turn right then a slight left into room 706",
+        "room 616": "Turn right then a slight left into room 706",
+        "room 607": "Turn right then a slight left into room 706",
+        "room 614": "Turn right then a slight left into room 706",
+      },
+    },
+    {
+      node: "room 708",
+      weight: 1,
+      direction: "Slight left into room 708",
+      directionFrom: {
+        "hall 600 right mid": "Turn right then a slight left into room 708",
+        "room 709": "Turn right then a slight left into room 708",
+        "room 609": "Turn right then a slight left into room 708",
+        "room 616": "Turn right then a slight left into room 708",
+        "room 607": "Turn right then a slight left into room 708",
+        "room 614": "Turn right then a slight left into room 708",
+      },
+    },
+    {
+      node: "room 710",
+      weight: 1,
+      direction: "Slight right into room 710",
+      directionFrom: {
+        "hall 600 right mid": "Turn left then a slight right into room 710",
+        "room 709": "Turn left then a slight right into room 710",
+        "room 609": "Turn left then a slight right into room 710",
+        "room 616": "Turn left then a slight right into room 710",
+        "room 607": "Turn left then a slight right into room 710",
+        "room 614": "Turn left then a slight right into room 710",
+      },
+    },
+    {
+      node: "room 712",
+      weight: 1,
+      direction: "Slight right into room 712",
+      directionFrom: {
+        "hall 600 right mid": "Turn left then a slight right into room 712",
+        "room 709": "Turn left then a slight right into room 712",
+        "room 609": "Turn left then a slight right into room 712",
+        "room 616": "Turn left then a slight right into room 712",
+        "room 607": "Turn left then a slight right into room 712",
+        "room 614": "Turn left then a slight right into room 712",
+      },
+    },
+    {
+      node: "room 714",
+      weight: 1,
+      direction: "Slight right into room 714",
+      directionFrom: {
+        "hall 600 right mid": "Turn left then a slight right into room 714",
+        "room 709": "Turn left then a slight right into room 714",
+        "room 609": "Turn left then a slight right into room 714",
+        "room 616": "Turn left then a slight right into room 714",
+        "room 607": "Turn left then a slight right into room 714",
+        "room 614": "Turn left then a slight right into room 714",
+      },
+    },
+    {
+      node: "room 711",
+      weight: 1,
+      direction: "Slight left into room 711",
+      directionFrom: {
+        "hall 600 right mid": "Turn left then a slight left into room 711",
+        "room 709": "Turn left then a slight left into room 711",
+        "room 609": "Turn left then a slight left into room 711",
+        "room 616": "Turn left then a slight left into room 711",
+        "room 607": "Turn left then a slight left into room 711",
+        "room 614": "Turn left then a slight left into room 711",
+      },
+    },
+    {
+      node: "room 713",
+      weight: 1,
+      direction: "Slight left into room 713",
+      directionFrom: {
+        "hall 600 right mid": "Turn left then a slight left into room 713",
+        "room 709": "Turn left then a slight left into room 713",
+        "room 609": "Turn left then a slight left into room 713",
+        "room 616": "Turn left then a slight left into room 713",
+        "room 607": "Turn left then a slight left into room 713",
+        "room 614": "Turn left then a slight left into room 713",
+      },
+    },
+    {
+      node: "room 715",
+      weight: 1,
+      direction: "Slight left into room 715",
+      directionFrom: {
+        "hall 600 right mid": "Turn left then a slight left into room 715",
+        "room 709": "Turn left then a slight left into room 715",
+        "room 609": "Turn left then a slight left into room 715",
+        "room 616": "Turn left then a slight left into room 715",
+        "room 607": "Turn left then a slight left into room 715",
+        "room 614": "Turn left then a slight left into room 715",
+      },
     },
   ], // Done
 
@@ -3082,20 +3893,465 @@ export const graph = {
     },
   ], // Done
 
-  // Hall 200 Start Left
-  "hall 700 upper mid": [
+  // Hall 700
+  "hall 700 hall 400 meet": [
     {
-      node: "hall 200 start left",
-      weight: 1.2,
-      direction: "Continue straight towards the main entrance",
+      node: "hall 200 hall 700 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 400 hall 900 meet": "Turn left",
+        "room 412": "Turn left",
+        "room 409 assessment center": "Turn left",
+        "hall 400 left mid": "Turn right",
+        "room 405": "Turn right",
+        "room 406": "Turn right",
+        "room 408": "Turn right",
+        "room 410": "Turn right",
+      },
     },
-    { node: "hall 800 end", weight: 1.1, direction: "Turn left" },
-  ],
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 700 hall 400 meet": "Turn right",
+        "room 412": "Turn right",
+        "room 409 assessment center": "Turn left",
+        "hall 400 left mid": "Turn left",
+        "room 405": "Turn left",
+        "room 406": "Turn left",
+        "room 408": "Turn left",
+        "room 410": "Turn left",
+      },
+    },
+    {
+      node: "hall 400 hall 900 meet",
+      weight: 1,
+      direction: "Turn right",
+      directionFrom: {
+        "hall 600 hall 700 meet": "Turn left",
+        "room 706": "Turn left",
+        "room 708": "Turn left",
+      },
+    },
+    {
+      node: "hall 400 left mid",
+      weight: 1,
+      direction: "Continue straight",
+      directionFrom: {
+        "hall 600 hall 700 meet": "Turn right",
+        "room 706": "Turn right",
+        "room 708": "Turn right",
+        "room 701 academic affairs": "Turn left",
+        "room 704 police": "Turn left",
+        "hall 200 hall 700 meet": "Turn left",
+      },
+    },
+    {
+      node: "room 405",
+      weight: 1,
+      direction: "Slight left into room 405",
+      directionFrom: {
+        "hall 600 hall 700 meet": "Turn right then a slight left into room 405",
+        "hall 200 hall 700 meet": "Turn left then a slight left into room 405",
+      },
+    },
+    {
+      node: "room 406",
+      weight: 1,
+      direction: "Slight right into room 406",
+      directionFrom: {
+        "hall 600 hall 700 meet":
+          "Turn right then a slight right into room 406",
+        "hall 200 hall 700 meet": "Turn left then a slight right into room 406",
+      },
+    },
+    {
+      node: "room 408",
+      weight: 1,
+      direction: "Slight right into room 408",
+      directionFrom: {
+        "hall 600 hall 700 meet":
+          "Turn right then a slight right into room 408",
+        "hall 200 hall 700 meet": "Turn left then a slight right into room 408",
+      },
+    },
+    {
+      node: "room 410",
+      weight: 1,
+      direction: "Slight right into room 410",
+      directionFrom: {
+        "hall 600 hall 700 meet":
+          "Turn right then a slight right into room 410",
+        "hall 200 hall 700 meet": "Turn left then a slight right into room 410",
+      },
+    },
+    {
+      node: "room 412",
+      weight: 1,
+      direction: "Slight left into room 410",
+      directionFrom: {
+        "hall 600 hall 700 meet": "Turn left then a slight left into room 412",
+        "hall 200 hall 700 meet": "Turn right then a slight left into room 412",
+      },
+    },
+    {
+      node: "room 409 assessment center",
+      weight: 1,
+      direction: "Slight right into room 409 - Assessment Center",
+      directionFrom: {
+        "hall 600 hall 700 meet":
+          "Turn left then a slight right into room 409 - Assessment Center",
+        "hall 200 hall 700 meet":
+          "Turn right then a slight right into room 409 - Assessment Center",
+      },
+    },
+    {
+      node: "room 701 academic affairs",
+      weight: 1,
+      direction: "Slight right into room 701 - Academic Affairs",
+      directionFrom: {
+        "hall 400 left mid":
+          "Turn right then a slight right into room 701 - Academic Affairs",
+        "hall 400 hall 900 meet":
+          "Turn left then a slight right into room 701 - Academic Affairs",
+      },
+    },
+    {
+      node: "room 704 police",
+      weight: 1,
+      direction: "Slight left into room 704 - Police",
+      directionFrom: {
+        "hall 400 left mid":
+          "Turn right then a slight left into room 704 - Police",
+        "hall 400 hall 900 meet":
+          "Turn left then a slight left into room 704 - Police",
+      },
+    },
+    {
+      node: "room 706",
+      weight: 1,
+      direction: "Slight right into room 706",
+      directionFrom: {
+        "hall 400 left mid": "Turn left then a slight right into room 706",
+        "hall 400 hall 900 meet":
+          "Turn right then a slight right into room 706",
+      },
+    },
+    {
+      node: "room 708",
+      weight: 1,
+      direction: "Slight right into room 708",
+      directionFrom: {
+        "hall 400 left mid": "Turn left then a slight right into room 708",
+        "hall 400 hall 900 meet":
+          "Turn right then a slight right into room 708",
+      },
+    },
+  ], // Done
 
-  "hall 800 end": [
-    { node: "hall 700 upper mid", weight: 1.1, direction: "Continue straight" },
-    { node: "room 127", weight: 1.1, direction: "Turn right into room 127" },
-  ],
-
-  "room 127": [{ node: "hall 800 end", weight: 1.1, direction: "Turn right" }],
+  // Rooms hall 700
+  "room 701 academic affairs": [
+    {
+      node: "room 704 police",
+      weight: 1,
+      direction: "Straight ahead into room 704 - Police",
+    },
+    {
+      node: "hall 200 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+  ], // Done
+  "room 706": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 708",
+      weight: 1,
+      direction: "Turn right then a slight right into room 708",
+    },
+  ], // Done
+  "room 704 police": [
+    {
+      node: "room 701 academic affairs",
+      weight: 1,
+      direction: "Straight ahead into room 701 - Academic Affairs",
+    },
+    {
+      node: "hall 200 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+  ], // Done
+  "room 708": [
+    {
+      node: "hall 700 hall 400 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 706",
+      weight: 1,
+      direction: "Turn left then a slight left into room 706",
+    },
+    {
+      node: "room 708A",
+      weight: 1,
+      direction: "Continue straight into room 708A",
+    },
+  ], // Done
+  "room 708A": [
+    {
+      node: "room 708",
+      weight: 1,
+      direction: "Continue straight",
+    },
+  ], // Done
+  "room 710": [
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 800 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 711",
+      weight: 1,
+      direction: "Straight ahead into room 711",
+    },
+    {
+      node: "room 713",
+      weight: 1,
+      direction: "Turn right then a slight left into room 713",
+    },
+    {
+      node: "room 715",
+      weight: 1,
+      direction: "Turn right then a slight left into room 715",
+    },
+    {
+      node: "room 714",
+      weight: 1,
+      direction: "Turn right then a slight right into room 714",
+    },
+    {
+      node: "room 712",
+      weight: 1,
+      direction: "Turn right then a slight right into room 712",
+    },
+  ], // Done
+  "room 712": [
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 800 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 711",
+      weight: 1,
+      direction: "Turn left then a slight right into room 711",
+    },
+    {
+      node: "room 713",
+      weight: 1,
+      direction: "Turn left then a slight right into room 713",
+    },
+    {
+      node: "room 715",
+      weight: 1,
+      direction: "Turn right then a slight left into room 715",
+    },
+    {
+      node: "room 714",
+      weight: 1,
+      direction: "Turn right then a slight right into room 714",
+    },
+    {
+      node: "room 710",
+      weight: 1,
+      direction: "Turn left then a slight left into room 710",
+    },
+  ], // Done
+  "room 714": [
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "hall 800 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "room 711",
+      weight: 1,
+      direction: "Turn left then a slight right into room 711",
+    },
+    {
+      node: "room 713",
+      weight: 1,
+      direction: "Turn left then a slight right into room 713",
+    },
+    {
+      node: "room 715",
+      weight: 1,
+      direction: "Turn right then a slight left into room 715",
+    },
+    {
+      node: "room 712",
+      weight: 1,
+      direction: "Turn left then a slight left into room 712",
+    },
+    {
+      node: "room 710",
+      weight: 1,
+      direction: "Turn left then a slight left into room 710",
+    },
+  ], // Done
+  "room 715": [
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 800 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 711",
+      weight: 1,
+      direction: "Turn right then a slight right into room 711",
+    },
+    {
+      node: "room 713",
+      weight: 1,
+      direction: "Turn right then a slight right into room 713",
+    },
+    {
+      node: "room 714",
+      weight: 1,
+      direction: "Turn left then a slight right into room 714",
+    },
+    {
+      node: "room 712",
+      weight: 1,
+      direction: "Turn right then a slight left into room 712",
+    },
+    {
+      node: "room 710",
+      weight: 1,
+      direction: "Turn right then a slight left into room 710",
+    },
+  ], // Done
+  "room 713": [
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 800 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 711",
+      weight: 1,
+      direction: "Turn right then a slight right into room 711",
+    },
+    {
+      node: "room 715",
+      weight: 1,
+      direction: "Turn left then a slight left into room 715",
+    },
+    {
+      node: "room 714",
+      weight: 1,
+      direction: "Turn left then a slight right into room 714",
+    },
+    {
+      node: "room 712",
+      weight: 1,
+      direction: "Turn left then a slight right into room 712",
+    },
+    {
+      node: "room 710",
+      weight: 1,
+      direction: "Turn right then a slight left into room 710",
+    },
+  ], // Done
+  "room 711": [
+    {
+      node: "hall 600 hall 700 meet",
+      weight: 1,
+      direction: "Turn right",
+    },
+    {
+      node: "hall 800 hall 700 meet",
+      weight: 1,
+      direction: "Turn left",
+    },
+    {
+      node: "room 713",
+      weight: 1,
+      direction: "Turn left then a slight left into room 713",
+    },
+    {
+      node: "room 715",
+      weight: 1,
+      direction: "Turn left then a slight left into room 715",
+    },
+    {
+      node: "room 714",
+      weight: 1,
+      direction: "Turn left then a slight right into room 714",
+    },
+    {
+      node: "room 712",
+      weight: 1,
+      direction: "Turn left then a slight right into room 712",
+    },
+    {
+      node: "room 710",
+      weight: 1,
+      direction: "Straight ahead into room 710",
+    },
+  ], // Done
 };

@@ -40,7 +40,7 @@ export const rooms = {
   // Hall 200 left
   "hall 200 start left": { x: 611, y: 644 },
   "hall 200 left mid": { x: 470, y: 582 },
-  "hall 200 hall 700 meet": { x: 610, y: 582 },
+  "hall 200 hall 700 meet": { x: 611, y: 582 },
   "hall 200 hall 1100 meet": { x: 854, y: 704 },
   "hall 200 hall 500 meet": { x: 353, y: 582 },
   "hall 200 hall 300 meet": { x: 226, y: 582 },
@@ -84,7 +84,7 @@ export const rooms = {
   // Hall 1100
   "hall 1100 start": { x: 854, y: 770 },
   "hall 1100 lower mid": { x: 854, y: 589 },
-  "hall 1100 hall 400 meet": { x: 854, y: 446 },
+  "hall 1100 hall 400 meet": { x: 854, y: 447 },
   "hall 1100 upper mid": { x: 854, y: 289 },
   "hall 1100 hall 800 meet": { x: 854, y: 190 },
   "hall 1100 end": { x: 854, y: 88 },
@@ -100,10 +100,31 @@ export const rooms = {
   "room 1110": { x: 868, y: 575 },
   "room 1112": { x: 868, y: 521 },
 
+  // Hall 400
+  "hall 400 hall 900 meet": { x: 725, y: 447 },
+  "hall 700 hall 400 meet": { x: 611, y: 447 },
+  "hall 400 left mid": { x: 475, y: 447 },
+
+  // Rooms hall 400
+  "room 401": { x: 410, y: 458 },
+  "room 402": { x: 418, y: 437 },
+  "room 403": { x: 435, y: 458 },
+  "room 404": { x: 430, y: 437 },
+  "room 405": { x: 486, y: 457 },
+  "room 406": { x: 494, y: 437 },
+  "room 408": { x: 504, y: 436 },
+  "room 409 assessment center": { x: 713, y: 458 },
+  "room 410": { x: 559, y: 436 },
+  "room 411": { x: 791, y: 456 },
+  "room 412": { x: 686, y: 434 },
+  "room 414": { x: 742, y: 435 },
+  "room 414A": { x: 748, y: 387 },
+
   // Hall 500
   "hall 500 start": { x: 354, y: 652 },
   "hall 500 bottom": { x: 354, y: 707 },
   "hall 500 bottom mid": { x: 264, y: 707 },
+  "hall 500 hall 400 meet": { x: 354, y: 447 },
 
   // Rooms hall 500
   library: { x: 192, y: 708 },
@@ -120,7 +141,7 @@ export const rooms = {
   "room 603": { x: 413, y: 335 },
   "hall 600 hall 500 meet": { x: 354, y: 321 },
   "hall 600 right mid": { x: 488, y: 321 },
-  "hall 600 hall 700 meet": { x: 612, y: 321 },
+  "hall 600 hall 700 meet": { x: 611, y: 321 },
 
   // Rooms hall 600
   "room 602": { x: 142, y: 309 },
@@ -134,13 +155,47 @@ export const rooms = {
   "room 607": { x: 490, y: 333 },
   "room 605": { x: 438, y: 333 },
 
-  // Room 700s and hall 700 connections
-  "room 701 academic affairs": { x: 600, y: 490 },
-  "room 704 police": { x: 625, y: 530 },
+  // Hall 700
   "hall 700 hall 400 meet": { x: 611, y: 447 },
 
   //Rooms hall 700
+  "room 701 academic affairs": { x: 600, y: 490 },
+  "room 704 police": { x: 625, y: 530 },
+  "room 706": { x: 625, y: 395 },
+  "room 708": { x: 625, y: 332 },
+  "room 708A": { x: 646, y: 332 },
   "room 709": { x: 557, y: 333 },
+  "room 710": { x: 625, y: 312 },
+  "room 711": { x: 598, y: 292 },
+  "room 713": { x: 599, y: 276 },
+  "room 712": { x: 627, y: 256 },
+  "room 715": { x: 599, y: 230 },
+  "room 714": { x: 625, y: 206 },
+
+  // Hall 900
+  "hall 900 mid": { x: 725, y: 321 },
+  "hall 800 hall 900 meet": { x: 723, y: 191 },
+
+  // Rooms hall 900
+  "room 901": { x: 714, y: 370 },
+  "room 901A": { x: 715, y: 349 },
+  "room 902": { x: 735, y: 337 },
+  "room 905": { x: 714, y: 332 },
+  "room 904": { x: 734, y: 305 },
+  "room 906": { x: 734, y: 275 },
+  "room 907": { x: 715, y: 295 },
+  "room 909": { x: 714, y: 232 },
+  "room 908": { x: 736, y: 221 },
+
+  // Rooms hall 800
+  "room 816": { x: 673, y: 178 },
+  "room 818": { x: 683, y: 179 },
+  "room 820": { x: 720, y: 176 },
+  "room 822": { x: 778, y: 178 },
+  "room 824": { x: 804, y: 178 },
+  "room 824A": { x: 809, y: 139 },
+  "room 824B": { x: 819, y: 85 },
+  "room 829": { x: 771, y: 199 },
 
   // Other areas
   "room 127": { x: 83, y: 73 },
