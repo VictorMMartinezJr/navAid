@@ -115,11 +115,16 @@ export const rooms = {
   "room 505": { x: 304, y: 697 },
   "room 506": { x: 327, y: 727 },
   "room 513": { x: 342, y: 618 },
-
+  "room 515": { x: 342, y: 539 },
+  "room 516 ged testing": { x: 366, y: 161 },
+  "room 517": { x: 339, y: 504 },
+  "room 518": { x: 365, y: 69 },
+  "room 519": { x: 343, y: 411 },
+  "room 521": { x: 342, y: 355 },
   "room 521A": { x: 305, y: 333 },
+  "room 525": { x: 342, y: 144 },
 
   // Hall 600
-
   "hall 600 hall 500 meet": { x: 354, y: 321 },
   "hall 600 right mid": { x: 488, y: 321 },
   "hall 600 hall 700 meet": { x: 611, y: 321 },
@@ -163,6 +168,7 @@ export const rooms = {
   "hall 800 hall 700 meet": { x: 612, y: 188 },
   "hall 800 left mid": { x: 233, y: 188 },
   "hall 800 right mid": { x: 488, y: 188 },
+  "hall 800 hall 900 meet": { x: 723, y: 188 },
 
   // Rooms hall 800
   "room 801": { x: 116, y: 203 },
@@ -193,7 +199,6 @@ export const rooms = {
 
   // Hall 900
   "hall 900 mid": { x: 725, y: 321 },
-  "hall 800 hall 900 meet": { x: 723, y: 191 },
 
   // Rooms hall 900
   "room 901": { x: 714, y: 370 },
