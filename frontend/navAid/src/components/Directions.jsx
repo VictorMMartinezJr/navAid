@@ -75,7 +75,7 @@ const Directions = () => {
         setTimeout(() => {
           setArrived(true);
           setLinePath([]);
-        }, 600);
+        }, 500);
       }, 200);
     }
   };
@@ -101,21 +101,25 @@ const Directions = () => {
   }, [currentStep, steps]);
 
   return (
-    <div className="absolute top-0 left-0 z-20 h-[10vh] w-full bg-[#303030] flex justify-between items-center px-2">
+    <div className="absolute top-0 left-0 z-20 min-h-[10vh] w-full bg-[#303030] flex justify-between items-center px-2">
       <motion.div
-        className="flex justify-center items-center gap-4 text-white text-4xl"
+        className="direction flex justify-center items-center gap-4 text-white text-5xl"
         key={currentStep}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: easeInOut }}
       >
-        {getDirectionIcon()}
-        <p className="text-white text-xl font-bold">
+        {steps[currentStep] ? (
+          getDirectionIcon()
+        ) : arrived ? (
+          <MdLocationPin />
+        ) : null}
+        <p className="text-white text-xl font-bold sm:text-2xl md:text-3xl">
           {arrived ? "Arrived" : steps[currentStep]}
         </p>
       </motion.div>
       <button
-        className="px-4 py-2 rounded-lg font-bold text-white bg-blue-600 cursor-pointer"
+        className="px-4 py-2 rounded-lg font-bold text-white bg-blue-600 cursor-pointer sm:text-xl"
         onClick={handleClick}
         disabled={isCooldown}
       >

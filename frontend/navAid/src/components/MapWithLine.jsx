@@ -5,10 +5,10 @@ import map from "../assets/buildingMap.jpg";
 import { rooms } from "../util/rooms";
 
 export default function MapWithLine({ currentRoom }) {
-  const { linePath } = useContext(NavigationContext);
+  const { linePath, stageRef, setInitialStageResetFn } =
+    useContext(NavigationContext);
   const containerRef = useRef(null);
   const [image, setImage] = useState(null);
-  const stageRef = useRef(null);
   const userMarker = currentRoom ? rooms[currentRoom] : null;
   const markerRef = useRef(null);
 
@@ -23,22 +23,31 @@ export default function MapWithLine({ currentRoom }) {
   useEffect(() => {
     if (!stageRef.current || !containerRef.current || !image) return;
 
+    const stage = stageRef.current;
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
 
-    // Image natural size
-    const imgNaturalWidth = image.naturalWidth;
-    const imgNaturalHeight = image.naturalHeight;
-
-    // No zoom initially
     const zoom = 1;
+    const posX = containerWidth / 2 - (image.naturalWidth / 2) * zoom - 100;
+    const posY = containerHeight / 2 - (image.naturalHeight / 2) * zoom - 250;
 
-    stageRef.current.scale({ x: zoom, y: zoom });
-    stageRef.current.position({
-      x: containerWidth / 2 - (imgNaturalWidth / 2) * zoom - 100,
-      y: containerHeight / 2 - (imgNaturalHeight / 2) * zoom - 250, // move map visually up by shifting stage down 250px
-    });
-    stageRef.current.batchDraw();
+    stage.scale({ x: zoom, y: zoom });
+    stage.position({ x: posX, y: posY });
+    stage.batchDraw();
+
+    // ✅ Save a reset function to context
+    const resetStagePosition = () => {
+      stage.to({
+        scaleX: zoom,
+        scaleY: zoom,
+        x: posX,
+        y: posY,
+        duration: 0.4,
+        easing: Konva.Easings.EaseInOut,
+      });
+    };
+
+    setInitialStageResetFn(() => resetStagePosition);
   }, [image]);
 
   // Zoom toward path center when path changes
@@ -65,7 +74,9 @@ export default function MapWithLine({ currentRoom }) {
       y: newY,
       easing: Konva.Easings.EaseInOut,
       onFinish: () => {
-        stage.batchDraw();
+        if (stage) {
+          stage.batchDraw();
+        }
       },
     }).play();
   }, [userMarker, image]);

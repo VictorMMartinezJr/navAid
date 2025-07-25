@@ -1,14 +1,33 @@
-
-import './App.css'
-import Nav from './components/Nav'
+import { useContext } from "react";
+import "./App.css";
+import FooterDestination from "./components/FooterDestination";
+import MapWithLine from "./components/MapWithLine";
+import NavigationContext from "./context/NavigationContext";
+import Start from "./components/Start";
+import CoordinatePicker from "./components/CoordinatePicker";
+import Directions from "./components/Directions";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-
+  const { startAndDestinationSubmitted, path, currentStep } =
+    useContext(NavigationContext);
   return (
-    <>
-      <Nav />
-    </>
-  )
+    <main className="h-screen w-full flex flex-col">
+      {startAndDestinationSubmitted && <Directions />}
+      <ToastContainer position="top-right" autoClose={3000} />
+
+      {/* Top content (Start will only show when not submitted) */}
+      {!startAndDestinationSubmitted && <Start />}
+
+      {/* Map takes up all available space */}
+      <div className="flex-grow relative">
+        <MapWithLine currentRoom={path[currentStep]} />
+      </div>
+
+      {/* Footer only shows when submitted */}
+      {startAndDestinationSubmitted && <FooterDestination />}
+    </main>
+  );
 }
 
-export default App
+export default App;
