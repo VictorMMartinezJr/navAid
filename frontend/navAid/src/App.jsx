@@ -12,7 +12,7 @@ function App() {
   const { startAndDestinationSubmitted, path, currentStep } =
     useContext(NavigationContext);
   return (
-    <main className="h-screen w-full flex flex-col">
+    <main className="h-full w-full flex flex-col overflow-hidden">
       {startAndDestinationSubmitted && <Directions />}
       <ToastContainer position="top-right" autoClose={3000} />
 

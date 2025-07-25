@@ -46,7 +46,7 @@ const Start = () => {
     // Input not numeric, fallback to partial string match
     for (let name of allRoomNames) {
       const nameNorm = normalize(name);
-      if (nameNorm.includes(inputNorm) || inputNorm.includes(nameNorm)) {
+      if (nameNorm.startsWith(inputNorm) || nameNorm.endsWith(inputNorm)) {
         return name;
       }
     }
