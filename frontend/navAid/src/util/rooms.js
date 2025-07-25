@@ -42,7 +42,7 @@ export const rooms = {
   "hall 200 left mid": { x: 470, y: 582 },
   "hall 200 hall 700 meet": { x: 611, y: 582 },
   "hall 200 hall 1100 meet": { x: 854, y: 704 },
-  "hall 200 hall 500 meet": { x: 353, y: 582 },
+  "hall 200 hall 500 meet": { x: 354, y: 582 },
   "hall 200 hall 300 meet": { x: 226, y: 582 },
   "hall 200 hall 100 meet": { x: 98, y: 582 },
 
@@ -164,7 +164,7 @@ export const rooms = {
   "room 719": { x: 466, y: 53 },
 
   // Hall 800
-  "hall 800 hall 500 meet": { x: 352, y: 188 },
+  "hall 800 hall 500 meet": { x: 354, y: 188 },
   "hall 800 hall 700 meet": { x: 612, y: 188 },
   "hall 800 left mid": { x: 233, y: 188 },
   "hall 800 right mid": { x: 488, y: 188 },
