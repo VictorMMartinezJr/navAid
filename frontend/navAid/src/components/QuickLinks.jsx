@@ -3,12 +3,7 @@ import QuickLink from "./QuickLink";
 
 const QuickLinks = () => {
   return (
-    <div className=" w-full text-gray-300 flex justify-around items-center">
-      <QuickLink
-        img={assets.onestopIcon}
-        altText={"One stop logo"}
-        quickLinkText="One Stop"
-      />
+    <div className=" w-full text-gray-300 grid grid-cols-3 grid-rows-2 gap-y-4">
       <QuickLink
         img={assets.bookstoreIcon}
         altText={"Bookstore logo"}
@@ -21,8 +16,23 @@ const QuickLinks = () => {
       />
       <QuickLink
         img={assets.policeIcon}
-        altText={"Police logo"}
-        quickLinkText="Campus Police"
+        altText={"campus police logo"}
+        quickLinkText="Police"
+      />
+      <QuickLink
+        img={assets.test}
+        altText={"GED testing logo"}
+        quickLinkText="GED Testing"
+      />
+      <QuickLink
+        img={assets.studentCenter}
+        altText={"Student center logo"}
+        quickLinkText="Student Center"
+      />
+      <QuickLink
+        img={assets.lounge}
+        altText={"Student lounge logo"}
+        quickLinkText="Student Lounge"
       />
     </div>
   );
