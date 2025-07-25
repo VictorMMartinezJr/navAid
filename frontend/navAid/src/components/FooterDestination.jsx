@@ -1,37 +1,53 @@
 import { useContext } from "react";
 import { assets } from "../assets/assets";
 import NavigationContext from "../context/NavigationContext";
+import { graph } from "../util/graph";
+import { s } from "framer-motion/client";
 
 const FooterDestination = () => {
   const {
     setStartingPoint,
+    startingPoint,
     setDestination,
     setPath,
+    setLinePath,
     destination,
+    path,
+    generateInstructions,
     setStartAndDestinationSubmitted,
+    initialStageResetFn,
   } = useContext(NavigationContext);
+  const steps = generateInstructions(path, graph);
 
   const handleCancel = () => {
     setStartingPoint("Main Entrance");
     setDestination(null);
     setPath([]);
+    setLinePath([]);
     setStartAndDestinationSubmitted(false);
+    if (initialStageResetFn) {
+      initialStageResetFn();
+    }
   };
   return (
-    <div className="absolute bottom-0 left-0 bg-[#3b3b3b] text-white p-4 w-full">
+    <div className="absolute h-[35vh] w-full bottom-0 left-0 bg-[#3b3b3b] text-white p-4 ">
       <div className="w-full flex justify-between items-center flex-1 ">
-        <p className="text-gray-400">Heading to:</p>
+        <p className="text-gray-400 sm:text-2xl md:text-3xl">Heading to:</p>
         <button
-          className="px-4 py-2 rounded-lg font-bold text-white bg-blue-600 cursor-pointer"
+          className="px-4 py-2 rounded-lg font-bold text-white bg-red-600 cursor-pointer sm:text-xl"
           onClick={handleCancel}
         >
-          Cancel
+          Cancel Route
         </button>
       </div>
 
-      <div className="w-full flex items-center flex-1 gap-2">
-        <img src={assets.searchIcon} alt="search icon" className="h-6 w-6 " />
-        <p className="text-2xl">{destination}</p>
+      <div className="w-full flex flex-col flex-1 ">
+        <p className="my-6 text-3xl md:text-4xl md:my-12">📍 {destination}</p>
+        <p className="text-gray-400 sm:text-2xl md:text-3xl">
+          {steps.length > 0
+            ? `${steps.length} total steps from ${startingPoint} to ${destination}`
+            : `Calculating route from ${startingPoint} to ${destination}...`}
+        </p>
       </div>
     </div>
   );
