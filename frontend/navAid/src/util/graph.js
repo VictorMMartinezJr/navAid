@@ -3,13 +3,13 @@ export const graph = {
   "main entrance": [
     {
       node: "hall 200 start right",
-      weight: 1.1,
+      weight: 1,
       direction: "Turn right",
       directionFrom: { "hall 200 start left": " Continue straight" },
     },
     {
       node: "hall 200 start left",
-      weight: 1.1,
+      weight: 1,
       direction: "Turn left",
       directionFrom: { "hall 200 start right": " Continue straight" },
     },
@@ -20,10 +20,22 @@ export const graph = {
 
   // One Stop
   "one stop": [
-    { node: "main entrance", weight: 1 },
-    { node: "room 224", weight: 1 },
-    { node: "hall 200 start left", weight: 1 },
-    { node: "hall 200 start right", weight: 1 },
+    {
+      node: "main entrance",
+      weight: 1,
+      direction: "Go straight towards the main entrance",
+    },
+    {
+      node: "room 224",
+      weight: 1,
+      direction: "Slight right into room 224",
+    },
+    { node: "hall 200 start left", weight: 1, direction: "Turn left" },
+    {
+      node: "hall 200 start right",
+      weight: 1,
+      direction: "Turn right to hall 200",
+    },
   ],
 
   // Hall 100 - Done
@@ -1037,6 +1049,7 @@ export const graph = {
       node: "hall 200 hall 700 meet",
       weight: 1,
       direction: "Continue straight",
+      directionFrom: { "room 224": "Turn right" },
     },
     {
       node: "one stop",
@@ -1742,6 +1755,7 @@ export const graph = {
     },
     { node: "one stop", weight: 1, direction: "Turn right towards one stop" },
     { node: "hall 200 start right", weight: 1, direction: "Turn left" },
+    { node: "hall 200 start left", weight: 1, direction: "Go straight" },
   ], // Done
   "room 223": [
     { node: "hall 200 start right", weight: 1, direction: "Turn left" },
