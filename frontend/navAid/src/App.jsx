@@ -4,7 +4,6 @@ import FooterDestination from "./components/FooterDestination";
 import MapWithLine from "./components/MapWithLine";
 import NavigationContext from "./context/NavigationContext";
 import Start from "./components/Start";
-import CoordinatePicker from "./components/CoordinatePicker";
 import Directions from "./components/Directions";
 import { ToastContainer } from "react-toastify";
 

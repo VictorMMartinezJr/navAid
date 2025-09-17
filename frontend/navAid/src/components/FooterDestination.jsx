@@ -1,8 +1,6 @@
 import { useContext } from "react";
-import { assets } from "../assets/assets";
 import NavigationContext from "../context/NavigationContext";
 import { graph } from "../util/graph";
-import { s } from "framer-motion/client";
 
 const FooterDestination = () => {
   const {

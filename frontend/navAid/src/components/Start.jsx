@@ -85,42 +85,44 @@ const Start = () => {
 
   return (
     <div className="start absolute bottom-0 left-0 z-20 h-[42vh] w-full bg-[#303030] flex flex-col justify-around items-center px-2">
-      <div className="flex flex-col w-full gap-4">
-        {destination && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <StartingPointSearchbar
-              shake={shakeStartInput}
-              setShake={setShakeStartInput}
-            />
-          </motion.div>
-        )}
+      <div className="flex flex-col justify-around items-center w-full h-full sm:w-[60%] lg:w-[40%]">
+        <div className="flex flex-col w-full gap-4">
+          {destination && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <StartingPointSearchbar
+                shake={shakeStartInput}
+                setShake={setShakeStartInput}
+              />
+            </motion.div>
+          )}
 
-        <DestinationSearchbar
-          shake={shakeDestinationInput}
-          setShake={setShakeDestinationInput}
-        />
+          <DestinationSearchbar
+            shake={shakeDestinationInput}
+            setShake={setShakeDestinationInput}
+          />
 
-        <div className="flex justify-end items-center">
-          <button
-            className={`px-4 py-2 rounded-lg font-bold text-white ${
-              destination
-                ? "bg-blue-600 cursor-pointer "
-                : "bg-blue-400 cursor-not-allowed"
-            } sm:text-xl`}
-            disabled={!destination}
-            onClick={handleClick}
-          >
-            Start
-          </button>
+          <div className="flex justify-end items-center">
+            <button
+              className={`px-4 py-2 rounded-lg font-bold text-white ${
+                destination
+                  ? "bg-blue-600 cursor-pointer "
+                  : "bg-blue-400 cursor-not-allowed"
+              } sm:text-xl`}
+              disabled={!destination}
+              onClick={handleClick}
+            >
+              Start
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="flex justify-around items-center w-full">
-        <QuickLinks />
+        <div className="flex justify-around items-center w-full">
+          <QuickLinks />
+        </div>
       </div>
     </div>
   );

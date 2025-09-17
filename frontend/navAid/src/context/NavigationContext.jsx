@@ -1,5 +1,4 @@
 import { createContext, useRef, useState } from "react";
-import { graph } from "../util/graph";
 
 const NavigationContext = createContext();
 

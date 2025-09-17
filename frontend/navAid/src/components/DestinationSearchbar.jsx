@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { assets } from "../assets/assets";
 import NavigationContext from "../context/NavigationContext";
 import { FcSearch } from "react-icons/fc";
 import { motion } from "framer-motion";

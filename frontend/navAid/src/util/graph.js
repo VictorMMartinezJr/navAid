@@ -4227,7 +4227,7 @@ export const graph = {
   ], // Done
   "hall 700 top": [
     {
-      node: "hall 800 hall 700 top",
+      node: "hall 800 hall 700 meet",
       weight: 1,
       direction: "Continue straight",
       directionFrom: { "room 719": "Turn right", "room 717": "Turn right" },
@@ -4553,12 +4553,22 @@ export const graph = {
       weight: 1,
       direction: "Turn right",
     },
+    {
+      node: "room 719",
+      weight: 1,
+      direction: "Straight ahead into room 719",
+    },
   ], // Done
   "room 719": [
     {
       node: "hall 700 top",
       weight: 1,
       direction: "Turn right",
+    },
+    {
+      node: "room 717",
+      weight: 1,
+      direction: "Straight ahead into room 717",
     },
   ], // Done
 
