@@ -19,8 +19,10 @@ function App() {
       {!startAndDestinationSubmitted && <Start />}
 
       {/* Map takes up all available space */}
-      <div className="flex-grow relative">
-        <MapWithLine currentRoom={path[currentStep]} />
+      <div className="w-full h-screen">
+        <div className="flex-grow  h-full w-full">
+          <MapWithLine currentRoom={path[currentStep]} />
+        </div>
       </div>
 
       {/* Footer only shows when submitted */}

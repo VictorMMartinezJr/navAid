@@ -1,10 +1,1 @@
-@media (max-width: 375px) {
-  .start {
-    height: 55vh;
-  }
-}
-@media (min-width: 376px) and (max-width: 400px) {
-  .start {
-    height: 50vh;
-  }
-}
+
