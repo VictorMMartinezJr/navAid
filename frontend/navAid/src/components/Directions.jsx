@@ -1,5 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import NavigationContext from "../context/NavigationContext";
+import { useEffect, useState } from "react";
+import { useNav } from "../context/NavigationContext";
 import { FcRight, FcLeft, FcUp } from "react-icons/fc";
 import { MdLocationPin } from "react-icons/md";
 import { rooms } from "../util/rooms";
@@ -18,7 +18,7 @@ const Directions = () => {
     currentStep,
     setCurrentStep,
     initialStageResetFn,
-  } = useContext(NavigationContext);
+  } = useNav();
   const [arrived, setArrived] = useState(false);
   const [directionArrow, setDirectionArrow] = useState("");
   const [isCooldown, setIsCooldown] = useState(false);
@@ -82,8 +82,8 @@ const Directions = () => {
 
   const getDirectionIcon = () => {
     if (arrived) return <MdLocationPin />;
-    if (directionArrow === "right") return <FcRight />;
-    if (directionArrow === "left") return <FcLeft />;
+    if (directionArrow === "right") return <FcRight className="" />;
+    if (directionArrow === "left") return <FcLeft className="" />;
     return <FcUp />;
   };
 
@@ -101,30 +101,32 @@ const Directions = () => {
   }, [currentStep, steps]);
 
   return (
-    <div className="absolute top-0 left-0 z-20 min-h-[10vh] w-full bg-[#303030] flex justify-between items-center px-2">
-      <motion.div
-        className="direction flex justify-center items-center gap-4 text-white text-5xl"
-        key={currentStep}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: easeInOut }}
-      >
-        {steps[currentStep] ? (
-          getDirectionIcon()
-        ) : arrived ? (
-          <MdLocationPin />
-        ) : null}
-        <p className="text-white text-xl font-bold sm:text-2xl md:text-3xl">
-          {arrived ? "Arrived" : steps[currentStep]}
-        </p>
-      </motion.div>
-      <button
-        className="px-4 py-2 rounded-lg font-bold text-white bg-blue-600 cursor-pointer sm:text-xl"
-        onClick={handleClick}
-        disabled={isCooldown}
-      >
-        {arrived ? "Restart" : "Next"}
-      </button>
+    <div className="absolute top-0 left-0 z-20 min-h-[10vh] w-full bg-[#303030] px-2 flex justify-center">
+      <div className="w-full min-h-[10vh] flex justify-between items-center lg:w-[85%]">
+        <motion.div
+          className="direction flex justify-center items-center gap-4 text-white text-5xl"
+          key={currentStep}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: easeInOut }}
+        >
+          {steps[currentStep] ? (
+            getDirectionIcon()
+          ) : arrived ? (
+            <MdLocationPin />
+          ) : null}
+          <p className="text-white text-xl font-bold sm:text-2xl md:text-3xl">
+            {arrived ? "Arrived" : steps[currentStep]}
+          </p>
+        </motion.div>
+        <button
+          className="px-4 py-2 rounded-lg font-bold text-white bg-blue-600 cursor-pointer transition-colors duration-200 hover:bg-blue-700 sm:text-xl lg:px-8"
+          onClick={handleClick}
+          disabled={isCooldown}
+        >
+          {arrived ? "Restart" : "Next"}
+        </button>
+      </div>
     </div>
   );
 };
