@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import NavigationContext from "../context/NavigationContext";
-import { IoStorefrontOutline } from "react-icons/io5";
+import { useNav } from "../context/NavigationContext";
 
 const QuickLink = ({ quickLinkText, Icon }) => {
-  const { setDestination } = useContext(NavigationContext);
+  const { setDestination } = useNav();
 
   const handleClick = () => {
     setDestination(quickLinkText);

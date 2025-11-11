@@ -1,6 +1,16 @@
-import { createContext, useRef, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 const NavigationContext = createContext();
+
+export const useNav = () => {
+  const context = useContext(NavigationContext);
+
+  if (!context) {
+    throw new Error("useNav must be used inside the NavigationProvider");
+  }
+
+  return context;
+};
 
 export const NavigationProvider = ({ children }) => {
   const [startingPoint, setStartingPoint] = useState("Main Entrance");

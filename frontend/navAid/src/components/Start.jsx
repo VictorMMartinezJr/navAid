@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import DestinationSearchbar from "./DestinationSearchbar";
-import NavigationContext from "../context/NavigationContext";
+import { useNav } from "../context/NavigationContext";
 import StartingPointSearchbar from "./StartingPointSearchbar";
 import { rooms } from "../util/rooms";
 import QuickLinks from "./QuickLinks";
@@ -20,7 +20,7 @@ const Start = () => {
     setLinePath,
     setStartAndDestinationSubmitted,
     setCurrentStep,
-  } = useContext(NavigationContext);
+  } = useNav();
 
   const normalize = (str) => str.toLowerCase().replace(/\s+/g, "");
   const extractDigits = (str) => str.match(/\d+/g)?.join("") || "";

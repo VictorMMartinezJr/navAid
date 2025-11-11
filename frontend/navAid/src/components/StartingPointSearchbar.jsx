@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import NavigationContext from "../context/NavigationContext";
+import { useNav } from "../context/NavigationContext";
 import { motion } from "framer-motion";
 import { FiSearch } from "react-icons/fi";
 const StartingPointSearchbar = ({ shake, setShake }) => {
-  const { startingPoint, setStartingPoint } = useContext(NavigationContext);
+  const { startingPoint, setStartingPoint } = useNav();
 
   return (
     <form
