@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import NavigationContext from "../context/NavigationContext";
-import { FcSearch } from "react-icons/fc";
 import { motion } from "framer-motion";
+import { FiSearch } from "react-icons/fi";
 const StartingPointSearchbar = ({ shake, setShake }) => {
   const { startingPoint, setStartingPoint } = useContext(NavigationContext);
 
@@ -17,7 +17,7 @@ const StartingPointSearchbar = ({ shake, setShake }) => {
         onAnimationComplete={() => setShake(false)}
       >
         <input
-          className="bg-[#5b5b5b] rounded-lg p-2 w-full text-white"
+          className="bg-[#4b4b4b] rounded-lg p-2 w-full text-white focus:outline-none focus:ring-3 focus:ring-blue-500 transition duration-200 lg:py-3"
           type="text"
           value={startingPoint ?? ""}
           onChange={(e) => {
@@ -27,7 +27,7 @@ const StartingPointSearchbar = ({ shake, setShake }) => {
           placeholder="Starting Point"
         />
       </motion.div>
-      <FcSearch className="absolute right-4 h-8 w-8 text-white" />
+      <FiSearch className="absolute right-4 h-8 w-8 text-[#818181]" />
     </form>
   );
 };
