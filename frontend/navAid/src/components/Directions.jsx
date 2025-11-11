@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNav } from "../context/NavigationContext";
-import { FcRight, FcLeft, FcUp } from "react-icons/fc";
-import { MdLocationPin } from "react-icons/md";
+import { MdMyLocation } from "react-icons/md";
 import { rooms } from "../util/rooms";
 import { graph } from "../util/graph";
 import { easeInOut, motion } from "framer-motion";
+import {
+  FaRegHandPointLeft,
+  FaRegHandPointRight,
+  FaRegHandPointUp,
+} from "react-icons/fa";
 
 const Directions = () => {
   const {
@@ -81,10 +85,11 @@ const Directions = () => {
   };
 
   const getDirectionIcon = () => {
-    if (arrived) return <MdLocationPin />;
-    if (directionArrow === "right") return <FcRight className="" />;
-    if (directionArrow === "left") return <FcLeft className="" />;
-    return <FcUp />;
+    if (directionArrow === "right")
+      return <FaRegHandPointRight className="text-blue-600" />;
+    if (directionArrow === "left")
+      return <FaRegHandPointLeft className="text-blue-600" />;
+    return <FaRegHandPointUp className="text-blue-600" />;
   };
 
   // Set which arrow to show in direction
@@ -113,7 +118,7 @@ const Directions = () => {
           {steps[currentStep] ? (
             getDirectionIcon()
           ) : arrived ? (
-            <MdLocationPin />
+            <MdMyLocation className="text-blue-600" />
           ) : null}
           <p className="text-white text-xl font-bold sm:text-2xl md:text-3xl">
             {arrived ? "Arrived" : steps[currentStep]}
