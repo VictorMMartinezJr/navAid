@@ -137,7 +137,14 @@ export default function MapWithLine({ currentRoom }) {
               <>
                 <Line
                   points={flatPoints}
-                  stroke="blue"
+                  strokeLinearGradientStartPoint={{ x: 0, y: 0 }}
+                  strokeLinearGradientEndPoint={{ x: 1500, y: 0 }} // adjust length to your line
+                  strokeLinearGradientColorStops={[
+                    0,
+                    "#396afc",
+                    0.5,
+                    "#2948ff",
+                  ]}
                   strokeWidth={8}
                   lineCap="round"
                   lineJoin="round"
