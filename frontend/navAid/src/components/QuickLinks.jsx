@@ -1,5 +1,4 @@
 import { MdLocalLibrary, MdOutlineLocalLibrary } from "react-icons/md";
-import { assets } from "../assets/assets";
 import QuickLink from "./QuickLink";
 import { IoSchoolSharp, IoStorefrontSharp } from "react-icons/io5";
 import { RiPoliceBadgeFill } from "react-icons/ri";

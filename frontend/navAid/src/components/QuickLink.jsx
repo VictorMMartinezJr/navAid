@@ -13,7 +13,7 @@ const QuickLink = ({ quickLinkText, Icon }) => {
       onClick={handleClick}
     >
       <div className="flex-center text-center bg-[#e5e5e5] rounded-[50%] border-none mb-2 p-[0.8rem] sm:p-6">
-        <Icon className="text-black w-6 h-6 transition-colors duration-200 group-hover:text-blue-500 sm:w-8 sm:h-8" />
+        <Icon className="text-gray-600 w-6 h-6 transition-colors duration-200 group-hover:text-blue-500 sm:w-8 sm:h-8" />
       </div>
 
       <p className="text-center transition-colors duration-200 group-hover:text-blue-500">
