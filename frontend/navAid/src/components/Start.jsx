@@ -77,8 +77,8 @@ const Start = () => {
     }
 
     if (startKey.includes("hall") || startKey.includes("meet")) {
-      setShakeDestinationInput(true);
-      toast.error("Destination not found.");
+      setShakeStartInput(true);
+      toast.error("Staring point not found.");
       return;
     }
 
