@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNav } from "../context/NavigationContext";
-import { MdMyLocation } from "react-icons/md";
+import { MdLocationPin } from "react-icons/md";
 import { rooms } from "../util/rooms";
 import { graph } from "../util/graph";
 import { easeInOut, motion } from "framer-motion";
 import {
-  FaRegHandPointLeft,
-  FaRegHandPointRight,
-  FaRegHandPointUp,
-} from "react-icons/fa";
+  RiArrowLeftFill,
+  RiArrowRightFill,
+  RiArrowUpFill,
+} from "react-icons/ri";
 
 const Directions = () => {
   const {
@@ -86,10 +86,10 @@ const Directions = () => {
 
   const getDirectionIcon = () => {
     if (directionArrow === "right")
-      return <FaRegHandPointRight className="text-blue-600" />;
+      return <RiArrowRightFill className="text-blue-600" />;
     if (directionArrow === "left")
-      return <FaRegHandPointLeft className="text-blue-600" />;
-    return <FaRegHandPointUp className="text-blue-600" />;
+      return <RiArrowLeftFill className="text-blue-600" />;
+    return <RiArrowUpFill className="text-blue-600" />;
   };
 
   // Set which arrow to show in direction
@@ -118,9 +118,9 @@ const Directions = () => {
           {steps[currentStep] ? (
             getDirectionIcon()
           ) : arrived ? (
-            <MdMyLocation className="text-blue-600" />
+            <MdLocationPin className="text-blue-600" />
           ) : null}
-          <p className="text-white text-xl font-bold sm:text-2xl md:text-3xl">
+          <p className="line-clamp-1 sm:line-clamp-none text-white text-xl font-bold sm:text-2xl md:text-3xl">
             {arrived ? "Arrived" : steps[currentStep]}
           </p>
         </motion.div>
