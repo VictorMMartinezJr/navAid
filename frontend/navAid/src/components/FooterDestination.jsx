@@ -34,7 +34,9 @@ const FooterDestination = () => {
   // Get actual end node from path (last node)
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
   const endNode = path.length > 0 ? path[path.length - 1] : destination;
-  const displayName = endNode ? capitalize(endNode) : "";
+  const startNode = path.length > 0 ? path[0] : destination;
+  const displayEndNode = endNode ? capitalize(endNode) : "";
+  const displayStartNode = startNode ? capitalize(startNode) : "";
 
   return (
     <div className="absolute h-[35vh] w-full bottom-0 left-0 bg-[#3b3b3b] text-white p-4 lg:flex lg:justify-center">
@@ -51,12 +53,12 @@ const FooterDestination = () => {
 
         <div className="w-full flex flex-col flex-1 ">
           <p className="my-6 font-bold text-3xl md:text-4xl md:my-12">
-            📍 {displayName}
+            📍 {displayEndNode}
           </p>
           <p className="text-gray-400 sm:text-2xl md:text-3xl">
             {steps.length > 0
-              ? `${stepsLeft} steps left from ${startingPoint} to ${displayName}`
-              : `Calculating route from ${startingPoint} to ${displayName}...`}
+              ? `${stepsLeft} steps left from ${displayStartNode} to ${displayEndNode}`
+              : `Calculating route from ${displayStartNode} to ${displayEndNode}...`}
           </p>
         </div>
       </div>
