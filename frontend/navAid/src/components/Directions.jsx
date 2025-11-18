@@ -22,12 +22,15 @@ const Directions = () => {
     currentStep,
     setCurrentStep,
     initialStageResetFn,
+    stepsLeft,
+    setStepsLeft,
   } = useNav();
   const [arrived, setArrived] = useState(false);
   const [directionArrow, setDirectionArrow] = useState("");
   const [isCooldown, setIsCooldown] = useState(false);
 
   const steps = generateInstructions(path, graph);
+  setStepsLeft(steps.length);
 
   const handleClick = () => {
     if (isCooldown) return;
@@ -44,6 +47,7 @@ const Directions = () => {
       setStartAndDestinationSubmitted(false);
       setCurrentStep(0);
       setArrived(false);
+      setStepsLeft(0);
       if (initialStageResetFn) {
         initialStageResetFn();
       }

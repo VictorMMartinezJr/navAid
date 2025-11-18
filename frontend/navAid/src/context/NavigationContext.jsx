@@ -22,6 +22,7 @@ export const NavigationProvider = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const stageRef = useRef();
   const [initialStageResetFn, setInitialStageResetFn] = useState(null);
+  const [stepsLeft, setStepsLeft] = useState(0);
 
   const generateInstructions = (nodePath, graph) => {
     const steps = [];
@@ -76,6 +77,8 @@ export const NavigationProvider = ({ children }) => {
     stageRef,
     initialStageResetFn,
     setInitialStageResetFn,
+    stepsLeft,
+    setStepsLeft,
   };
 
   return (

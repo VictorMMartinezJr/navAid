@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNav } from "../context/NavigationContext";
 import { graph } from "../util/graph";
 
@@ -13,8 +14,10 @@ const FooterDestination = () => {
     generateInstructions,
     setStartAndDestinationSubmitted,
     initialStageResetFn,
+    currentStep,
   } = useNav();
   const steps = generateInstructions(path, graph);
+  const stepsLeft = path.length > 0 ? steps.length - currentStep : 0;
 
   const handleCancel = () => {
     setStartingPoint("Main Entrance");
@@ -22,10 +25,17 @@ const FooterDestination = () => {
     setPath([]);
     setLinePath([]);
     setStartAndDestinationSubmitted(false);
+    setStepsLeft(0);
     if (initialStageResetFn) {
       initialStageResetFn();
     }
   };
+
+  // Get actual end node from path (last node)
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+  const endNode = path.length > 0 ? path[path.length - 1] : destination;
+  const displayName = endNode ? capitalize(endNode) : "";
+
   return (
     <div className="absolute h-[35vh] w-full bottom-0 left-0 bg-[#3b3b3b] text-white p-4 lg:flex lg:justify-center">
       <div className="lg:w-[85%]">
@@ -41,12 +51,12 @@ const FooterDestination = () => {
 
         <div className="w-full flex flex-col flex-1 ">
           <p className="my-6 font-bold text-3xl md:text-4xl md:my-12">
-            📍 {destination}
+            📍 {displayName}
           </p>
           <p className="text-gray-400 sm:text-2xl md:text-3xl">
             {steps.length > 0
-              ? `${steps.length} total steps from ${startingPoint} to ${destination}`
-              : `Calculating route from ${startingPoint} to ${destination}...`}
+              ? `${stepsLeft} steps left from ${startingPoint} to ${displayName}`
+              : `Calculating route from ${startingPoint} to ${displayName}...`}
           </p>
         </div>
       </div>
