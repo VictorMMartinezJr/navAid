@@ -41,12 +41,13 @@ const Start = () => {
           return name;
         }
       }
-      return null; // no exact digit match found
+      return null;
     }
 
     // Input not numeric, fallback to partial string match
     for (let name of allRoomNames) {
       const nameNorm = normalize(name);
+
       if (nameNorm.startsWith(inputNorm) || nameNorm.endsWith(inputNorm)) {
         return name;
       }
@@ -61,6 +62,8 @@ const Start = () => {
     const startKey = findBestMatch(startingPoint);
     const endKey = findBestMatch(destination);
 
+    console.log(endKey);
+
     if (!startKey) {
       setShakeStartInput(true);
       toast.error("Starting point not found.");
@@ -68,6 +71,18 @@ const Start = () => {
     }
 
     if (!endKey) {
+      setShakeDestinationInput(true);
+      toast.error("Destination not found.");
+      return;
+    }
+
+    if (startKey.includes("hall") || startKey.includes("meet")) {
+      setShakeDestinationInput(true);
+      toast.error("Destination not found.");
+      return;
+    }
+
+    if (endKey.includes("hall") || endKey.includes("meet")) {
       setShakeDestinationInput(true);
       toast.error("Destination not found.");
       return;
@@ -85,7 +100,7 @@ const Start = () => {
   };
 
   return (
-    <div className="absolute bottom-0 left-0 z-20 min-h-[45vh] w-full bg-[#212121] flex flex-col justify-around items-center px-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent lg:h-screen lg:overflow-y-auto lg:overflow-x-hidden lg:w-[30vw] 2xl:px-8">
+    <div className="absolute bottom-0 left-0 z-20 min-h-[45vh] w-full bg-[#303030] flex flex-col justify-around items-center px-2 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent lg:h-screen lg:overflow-y-auto lg:overflow-x-hidden lg:w-[30vw] 2xl:px-8">
       <div className="flex flex-col justify-around items-center w-full h-full gap-8 md:w-[80%] lg:w-full">
         <img
           src={assets.logo}
@@ -129,10 +144,10 @@ const Start = () => {
 
           <div className="flex justify-end items-center">
             <button
-              className={`px-4 py-2 rounded-lg font-bold text-white hover:bg-blue-500 ${
+              className={`px-4 py-2 rounded-lg font-bold text-white ${
                 destination
-                  ? "bg-blue-500 cursor-pointer "
-                  : "bg-blue-700 cursor-not-allowed"
+                  ? "bg-blue-700 cursor-pointer "
+                  : "bg-blue-500 cursor-not-allowed"
               } transition-colors duration-200 sm:text-xl lg:w-full lg:py-3`}
               disabled={!destination}
               onClick={handleClick}
